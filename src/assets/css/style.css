@@ -1,0 +1,17 @@
+/* 헤더 css */
+header{
+    width: 100%;
+    padding: 16px 0;
+    text-align: center;
+    position: relative;
+}
+header a{
+    display: inline-block;
+    width: 201px;
+}
+header button{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform:translate(0,-50%);
+}

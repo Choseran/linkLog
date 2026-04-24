@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../assets/css/style.css';
+import '../assets/css/reset.css';
 
 export default function Index(){  // 여긴 무조건 대문자
     const [log, setLog] = ('');
