@@ -6,22 +6,45 @@
     color: #1c1c1c;
 }
 
-html {
-    width: 100%;
-    height: 100vh;
-    background-color: #F6F8F8;
+*::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body {
+html {
+    width: 100%;
+    /* height: 100vh; */
+    min-height: 100%; /* 모바일화면은 이걸로 해야하지 않나요?(모름) */
+    background-color: #F6F8F8;
+    font-size: 16px; /* 기본 폰트 사이즈 */
+    /* 텍스트 렌더링 최적화 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* 리액트는 body 보다 #root를 더 권장합니다
+body 를 사용해도 되지만 꼬일 가능성이 높음!
+배경색, 기본 폰트 같이 기본적인것들은
+body에 써도 괜찮지만 웬만하면 #root에 쓰는게
+안전하다고 배웠읍니다 */
+/* body {
     width: 100%;
     min-width: 1260px;
+    background-color: #F6F8F8;
+} */
+#root {
+    width: 100%;
+    /* min-width: 1260px; */ /* 요거 height 아닌가요?*/
+    min-height: 1260px;
     background-color: #F6F8F8;
 }
 
 img,
 svg {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     display: block;
 }
@@ -59,7 +82,7 @@ input{
     padding: 0 5px;
     outline: 0;
     border: 0;
-    border-bottom: 1px solid#1c1c1c;
+    /* border-bottom: 1px solid#1c1c1c; */
 }
 input::placeholder{
     color: #9d9d9d;
