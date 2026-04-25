@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import "../assets/css/style.css";
 
-export default function Join() {
+export default function JoinForm() {
     const [password, setPassword] = useState("");
     const [islengthValid, setIslengthValid] = useState(false);
     const [isPatternValid, setIsPatternValid] = useState(false);
@@ -50,8 +50,8 @@ export default function Join() {
 
     return (
         <section className="joinContainer">
-            <h4>회원가입</h4>
             <form>
+                <h4>회원가입</h4>
                 <table>
                     <tbody>
                         <tr>
@@ -209,8 +209,8 @@ export default function Join() {
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit" className="joinBtn">가입하기</button>
             </form>
+            <button type="submit" className="joinBtn">가입하기</button>
         </section>
     );
 }

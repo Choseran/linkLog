@@ -39,6 +39,8 @@ body에 써도 괜찮지만 웬만하면 #root에 쓰는게
     /* min-width: 1260px; */ /* 요거 height 아닌가요?*/
     min-height: 1260px;
     background-color: #F6F8F8;
+    display: flex;
+    flex-direction: column;
 }
 
 img,

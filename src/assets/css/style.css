@@ -1,166 +1,170 @@
 /* 헤더 css */
-#root header{ /* #root 이건 붙여도되고 안붙여도 되긴해요...*/
-    width: 100%;
-    padding: 16px 0;
-    text-align: center;
-    position: relative;
+#root header {
+  /* #root 이건 붙여도되고 안붙여도 되긴해요...*/
+  width: 100%;
+  padding: 16px 0;
+  text-align: center;
+  position: relative;
 }
-header a{
-    display: inline-block;
-    width: 201px;
+header a {
+  display: inline-block;
+  width: 201px;
 }
-header button{
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform:translate(0,-50%);
+header button {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate(0, -50%);
 }
 
-header svg{ /* 령경 추가 */
-    width: 30px;
-    stroke: #1340A2;
+header svg {
+  /* 령경 추가 - 확인하시면 지우셔도돼요 */
+  width: 30px;
+  stroke: #1340a2;
 }
 
 /* ---------------- 푸터---------------- */
-#root body{
-}
-#root footer{
-    position: relative;
-    text-align: center;
+#root footer {
+  text-align: center;
+  margin-top: 120px; /* 하단 여백 */
 }
 
-#root footer a{
-    position: absolute;
-    bottom: 0;
+#root footer p {
+  display: inline-block;
+  position: relative;
+  /* bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    color: #999;
-    padding: 30px;
+    transform: translateX(-50%); */
+  width: 100%;
+  color: #999;
+  padding: 30px;
 }
 
-#root footer a::after{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    border: 1px solid #DADADA;
+#root footer p::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  border: 1px solid #dadada;
 }
 
 /* ---------------- 회원가입 ---------------- */
 /* 회원가입 전체 */
-#root .joinContainer{
-    margin: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 20px;
+#root .joinContainer form {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 20px;
 }
 /* 회원가입 타이틀 */
-#root .joinContainer h4{
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 30px;
+#root .joinContainer h4 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
 }
 /* 입력 폼 공통 서식 */
-#root .joinContainer form table{
-    width: 100%;
+#root .joinContainer form table {
+  width: 100%;
 }
-#root .joinContainer form table tbody{
-    display: flex;
-    flex-direction: column;
-    gap: 65px;
+#root .joinContainer form table tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 65px;
 }
-#root .joinContainer form table tbody tr td{
-    display: block;
-    padding: 5px 0;
-    font-size: 17px;
-    position: relative;
+#root .joinContainer form table tbody tr td {
+  display: block;
+  padding: 5px 0;
+  font-size: 17px;
+  position: relative;
 }
-#root .joinContainer form table tbody tr td .requiredMark{
-    color: #D31616;
+#root .joinContainer form table tbody tr td .requiredMark {
+  color: #d31616;
 }
-#root .joinContainer form table tbody tr td > input{
-    width: 100%;
-    padding: 10px 0;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #AEAEAE;
-    font-size: 16px;
+#root .joinContainer form table tbody tr td > input {
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #aeaeae;
+  font-size: 16px;
 }
 
 /* 중복확인 버튼 */
-#root .joinContainer form table tbody tr td .checkDuplicateBtn{
-    position: absolute;
-    right: 0;
-    background-color: #1340A2;
-    color: #fff;
-    padding: 8px 13px;
-    border-radius: 5px;
+#root .joinContainer form table tbody tr td .checkDuplicateBtn {
+  position: absolute;
+  right: 0;
+  background-color: #1340a2;
+  color: #fff;
+  padding: 8px 13px;
+  border-radius: 5px;
 }
-#root .joinContainer form table tbody tr td .checkDuplicateBtn:hover{
-    background-color: #062b7a;
+#root .joinContainer form table tbody tr td .checkDuplicateBtn:hover {
+  background-color: #062b7a;
 }
 
 /* 비밀번호 힌트 */
-#root .joinContainer form table tbody tr td .pwHint{
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    font-size: 15px;
+#root .joinContainer form table tbody tr td .pwHint {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 15px;
 }
-#root .joinContainer form table tbody tr td .pwHint .pwStatusMessage{
-    display: flex;
-    align-content: center;
+#root .joinContainer form table tbody tr td .pwHint .pwStatusMessage {
+  display: flex;
+  align-content: center;
 }
 /* svg 공통 */
-#root .joinContainer form table tbody tr td .pwHint .pwStatusMessage svg{
-    width: 18px;
-    margin-right: 5px;
+#root .joinContainer form table tbody tr td .pwHint .pwStatusMessage svg {
+  width: 18px;
+  margin-right: 5px;
 }
 /* 비밀번호 힌트 - 6자 이상 */
-#root .joinContainer form table tbody tr td .pwHint .false svg{
-    stroke: #D31616;
+#root .joinContainer form table tbody tr td .pwHint .false svg {
+  stroke: #d31616;
 }
-#root .joinContainer form table tbody tr td .pwHint .false p{
-    color: #D31616;
+#root .joinContainer form table tbody tr td .pwHint .false p {
+  color: #d31616;
 }
 /* 비밀번호 힌트 - 영문, 숫자 포함 */
-#root .joinContainer form table tbody tr td .pwHint .true svg{
-    stroke: #11A11B;
+#root .joinContainer form table tbody tr td .pwHint .true svg {
+  stroke: #11a11b;
 }
-#root .joinContainer form table tbody tr td .pwHint .true p{
-    color: #11A11B;
+#root .joinContainer form table tbody tr td .pwHint .true p {
+  color: #11a11b;
 }
 
 /* 약관동의 */
-#root .joinContainer form table tbody .termsContainer .termsList ul li input{
-    margin-right: 6px;
-    /* appearance: none;
-    -webkit-appearance: none; */
-    position: relative;
+#root .joinContainer form table tbody .termsContainer .termsList ul li input {
+  margin-right: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
 }
-&:checked::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 10px;
-    height: 10px;
-    /* border: 3px solid white; */
-    border-radius: 50%;
-    background-color: #cbcbcb;
-    transform: translate(-50%, -50%);
-  }
+input[type="checkbox"]:checked::before {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background-color: #1340a2;
+}  
 
 /* 가입하기 버튼 */
-#root .joinContainer form .joinBtn{
-    background-color: #1340A2;
-    color: #fff;
-    padding: 8px 13px;
-    border-radius: 5px;
-    margin: 0 auto;
+#root .joinContainer .joinBtn {
+  display: block;
+  background-color: #1340a2;
+  color: #fff;
+  padding: 8px 13px;
+  border-radius: 5px;
+  margin: 0 auto;
 }
-#root .joinContainer form .joinBtn:hover{
-    background-color: #062b7a;
+
+#root .joinContainer .joinBtn:hover {
+  background-color: #062b7a;
 }
