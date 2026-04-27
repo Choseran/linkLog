@@ -7,7 +7,7 @@ import JoinForm from './pages/joinForm';
 function App() {
   return (
     <BrowserRouter>
-    <Header />
+      <Header />
       <Routes>
         <Route path='/' element={<Index />} />
         <Route path='/join' element={<JoinForm />} />

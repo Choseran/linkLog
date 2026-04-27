@@ -14,8 +14,7 @@
 
 html {
     width: 100%;
-    /* height: 100vh; */
-    min-height: 100%; /* 모바일화면은 이걸로 해야하지 않나요?(모름) */
+    min-height: 100%;
     background-color: #F6F8F8;
     font-size: 16px; /* 기본 폰트 사이즈 */
     /* 텍스트 렌더링 최적화 */
@@ -29,14 +28,8 @@ body 를 사용해도 되지만 꼬일 가능성이 높음!
 배경색, 기본 폰트 같이 기본적인것들은
 body에 써도 괜찮지만 웬만하면 #root에 쓰는게
 안전하다고 배웠읍니다 */
-/* body {
-    width: 100%;
-    min-width: 1260px;
-    background-color: #F6F8F8;
-} */
 #root {
     width: 100%;
-    /* min-width: 1260px; */ /* 요거 height 아닌가요?*/
     min-height: 1260px;
     background-color: #F6F8F8;
     display: flex;
@@ -55,21 +48,24 @@ ol,
 ul,
 li {
     list-style: none;
+    color: #222;
 }
 
 a {
     text-decoration: none;
-    color: #1c1c1c;
+    color: #222;
     cursor: pointer;
 }
 
 i {
     font-style: normal;
     /* display: block; */
+    color: #222;
 }
 
 em {
     font-style: normal;
+    color: #222;
 }
 
 h1,
@@ -85,12 +81,14 @@ span {
     font-weight: 400;
     margin: 0;
     padding: 0;
+    color: #222;
 }
 
 input{
     padding: 0 5px;
     outline: 0;
     border: 0;
+    color: #222;
     /* border-bottom: 1px solid#1c1c1c; */
 }
 input::placeholder{

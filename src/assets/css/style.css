@@ -1,6 +1,21 @@
+/* svg 공통 */
+/* 공통이라 위로 뺐습니다.
+    근데 만약 포폴에 서술하실 때 작업영역 설명하기 편하게 밑에 몰아두신거면
+    밑에꺼 주석처리만 해놨으니까 이거 삭제하시고 그거 살리세요 */
+#root .joinContainer form table tbody tr td .pwHint .pwStatusMessage svg {
+  width: 18px;
+  margin-right: 5px;
+}
+/* btn 공통 */
+#root .btn{
+    background-color: #1340a2;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 16px;
+}
+
 /* 헤더 css */
 #root header {
-  /* #root 이건 붙여도되고 안붙여도 되긴해요...*/
   width: 100%;
   padding: 16px 0;
   text-align: center;
@@ -16,11 +31,96 @@ header button {
   right: 20px;
   transform: translate(0, -50%);
 }
-
 header svg {
-  /* 령경 추가 - 확인하시면 지우셔도돼요 */
   width: 30px;
   stroke: #1340a2;
+}
+header .logo svg {
+    width: 100%;
+    stroke: 0;
+}
+
+/* 마이페이지 모달창 */
+#root .mypageWrap{
+    display: block;
+    position: fixed;
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+#root .mypageWrap .mypageModal{
+    display: block;
+    width: calc(100% - 50px);
+    min-height: 100%;
+    border-radius: 30px 0 0 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #fff;
+    padding: 20px;
+}
+#root .mypageWrap .mypageModal .mypageModalBtn svg{
+    width: 18px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+#root .mypageModal .mypageModalTop{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #aeaeae;
+}
+#root .mypageModal .mypageModalTop .mypageProfile{
+    display: flex;
+    align-items: center;
+}
+#root .mypageModal .mypageModalTop .mypageProfileImg{
+    width: 70px;
+    height: 70px;
+    display: inline-flex;
+    border-radius: 100%;
+    border: 1px solid #ececec;
+    overflow: hidden;
+}
+
+#root .mypageModal .mypageModalTop .mypageInfo{
+    margin-left: 20px;
+}
+#root .mypageModal .mypageModalTop .mypageInfo .mypageName{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+#root .mypageModal .mypageModalTop .mypageInfo .mypageId{
+    font-size: 14px;
+    font-weight: 600;
+    color: #aeaeae;
+}
+
+#root .mypageModal .mypageModalTop a{
+    font-size: 12px;
+}
+
+#root .mypageModal .mypageModalList li{
+  padding: 21px 10px;
+  border-bottom: 1px solid #dadada;
+}
+#root .mypageModal .mypageModalList li a{
+  display: flex;
+  align-items: center;
+}
+#root .mypageModal .mypageModalList li svg{
+  height: 27px;
+  width: 27px;
+  margin-right: 12px;
+}
+#root .mypageModal .mypageModalList li p{
+  font-size: 16px;
 }
 
 /* ---------------- 푸터---------------- */
@@ -114,11 +214,11 @@ header svg {
   display: flex;
   align-content: center;
 }
-/* svg 공통 */
+/* svg 공통
 #root .joinContainer form table tbody tr td .pwHint .pwStatusMessage svg {
   width: 18px;
   margin-right: 5px;
-}
+} */
 /* 비밀번호 힌트 - 6자 이상 */
 #root .joinContainer form table tbody tr td .pwHint .false svg {
   stroke: #d31616;
