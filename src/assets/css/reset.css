@@ -65,7 +65,7 @@ a {
 
 i {
     font-style: normal;
-    display: block;
+    /* display: block; */
 }
 
 em {
@@ -76,8 +76,15 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6,
+p,
+a,
+span {
+    text-decoration: none;
     font-weight: 400;
+    margin: 0;
+    padding: 0;
 }
 
 input{

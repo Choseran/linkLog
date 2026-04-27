@@ -135,12 +135,16 @@ header svg {
 }
 
 /* 약관동의 */
+#root .joinContainer form table tbody .termsContainer .termsList ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 #root .joinContainer form table tbody .termsContainer .termsList ul li {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
 }
-#root .joinContainer form table tbody .termsContainer .termsList ul .termsItem{
+#root .joinContainer form table tbody .termsContainer .termsList ul .termsItem {
   flex-direction: column;
   align-items: flex-start;
 }
@@ -160,40 +164,67 @@ header svg {
 }
 
 /* 약관 체크박스, 타이틀, 더보기 div */
-#root .joinContainer .termsMainRow{
+#root .joinContainer .termsMainRow {
   width: 100%;
   display: flex;
   align-items: center;
 }
 
 /* 약관 더보기 버튼 */
-#root .joinContainer .viewDetailBtn{
+#root .joinContainer .viewDetailBtn {
   margin-left: auto;
 }
 
 /* 약관 상세 div */
-#root .joinContainer .termsScrollBox{
+#root .joinContainer .termsScrollBox {
   width: 92%;
-  margin: 10px 0 30px 30px;
-  padding-top: 10px;
   font-size: 15px;
   border-top: 1px solid #e1e1e1;
   white-space: pre-wrap;
+  transition: 0.3s;
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+#root .joinContainer .termsScrollBox.show {
+  opacity: 1;
+  margin: 10px 0 30px 30px;
+  padding-top: 10px;
+  max-height: 100px;
 }
 
 /* 마우스 올렸을 때 테두리 색상 변경 */
-#root .joinContainer form table tbody .termsContainer .termsList ul li input[type="checkbox"]:hover {
+/* #root .joinContainer form table tbody .termsContainer .termsList ul li input[type="checkbox"]:hover {
   border-color: #1340a2;
-}
+} */
 
 /* 체크되었을 때 스타일 */
-#root .joinContainer form table tbody .termsContainer .termsList ul li input[type="checkbox"]:checked {
+#root
+  .joinContainer
+  form
+  table
+  tbody
+  .termsContainer
+  .termsList
+  ul
+  li
+  input[type="checkbox"]:checked {
   background-color: #1340a2;
   border-color: #1340a2;
 }
 
 /* 체크 아이콘 */
-#root .joinContainer form table tbody .termsContainer .termsList ul li input[type="checkbox"]:checked::before {
+#root
+  .joinContainer
+  form
+  table
+  tbody
+  .termsContainer
+  .termsList
+  ul
+  li
+  input[type="checkbox"]:checked::before {
   content: "";
   position: absolute;
   top: 45%;
