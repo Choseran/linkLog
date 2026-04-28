@@ -149,6 +149,7 @@ export default function Header() {
               </li>
 
             </ul>
+            <a className={"mypageModalBottom"}>탈퇴하기</a>
           </div>
         </div>
       }

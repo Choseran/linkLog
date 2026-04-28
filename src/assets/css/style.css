@@ -40,7 +40,7 @@ header .logo svg {
     stroke: 0;
 }
 
-/* 마이페이지 모달창 */
+/* 마이페이지 모달창 css */
 #root .mypageWrap{
     display: block;
     position: fixed;
@@ -121,6 +121,14 @@ header .logo svg {
 }
 #root .mypageModal .mypageModalList li p{
   font-size: 16px;
+}
+
+#root .mypageModal .mypageModalBottom{
+  color: #aeaeae;
+  font-size: 16px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
 /* ---------------- 푸터---------------- */
