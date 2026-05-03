@@ -1,9 +1,26 @@
 /* btn 공통 */
-#root .btn{
-    background-color: #1340a2;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px 16px;
+#root .btn {
+  background-color: #1340a2;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 16px;
+}
+/* 콘텐츠 랩 공통 */
+#root .contentWrap {
+  width: calc(100% - 40px);
+  margin: 20px auto 0;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 30px 20px;
+}
+/* input 공통 */
+/* 님꺼 가져오면서 margin-bottom 수치만 수정함 */
+#root input {
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #aeaeae;
+  font-size: 20px;
 }
 
 /* 헤더 css */
@@ -28,99 +45,196 @@ header svg {
   stroke: #1340a2;
 }
 header .logo svg {
-    width: 100%;
-    stroke: 0;
+  width: 100%;
+  stroke: 0;
 }
 
 /* 마이페이지 모달창 css */
-#root .mypageWrap{
-    display: block;
-    position: fixed;
-    width: 100%;
-    min-height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 2;
-}
-#root .mypageWrap .mypageModal{
-    display: block;
-    width: 90%; /* 1025px 이상 60% */
-    min-height: 100%;
-    border-radius: 30px 0 0 30px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: #fff;
-    padding: 20px;
-}
-#root .mypageWrap .mypageModal .mypageModalBtn svg{
-    width: 18px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
-#root .mypageModal .mypageModalTop{
-    margin-top: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 30px;
-    border-bottom: 2px solid #aeaeae;
-}
-#root .mypageModal .mypageModalTop .mypageProfile{
-    display: flex;
-    align-items: center;
-}
-#root .mypageModal .mypageModalTop .mypageProfileImg{
-    width: 70px;
-    height: 70px;
-    display: inline-flex;
-    border-radius: 100%;
-    border: 1px solid #ececec;
-    overflow: hidden;
-}
+#root .mypageWrap {
+  display: block;
+  position: fixed;
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2;
 
-#root .mypageModal .mypageModalTop .mypageInfo{
-    margin-left: 20px;
+  transition-delay: 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease-in-out;
 }
-#root .mypageModal .mypageModalTop .mypageInfo .mypageName{
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 5px;
+#root .mypageWrap.mypageModalBackOpen {
+  opacity: 1;
+  visibility: visible;
 }
-#root .mypageModal .mypageModalTop .mypageInfo .mypageId{
-    font-size: 14px;
-    font-weight: 600;
-    color: #aeaeae;
-}
+#root .mypageWrap .mypageModal {
+  display: block;
+  width: 90%; /* 1025px 이상 60% */
+  min-height: 100%;
+  border-radius: 30px 0 0 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #fff;
+  padding: 20px;
 
-#root .mypageModal .mypageModalTop a{
-    font-size: 12px;
+  transition-delay: 0.3s;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
 }
-
-#root .mypageModal .mypageModalList li{
-  padding: 21px 10px;
-  border-bottom: 1px solid #dadada;
+#root .mypageWrap .mypageModal.mypageModalOpen {
+  transform: translateX(0);
 }
-#root .mypageModal .mypageModalList li a{
+#root .mypageWrap .mypageModal .mypageModalBtn svg {
+  width: 18px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+#root .mypageModal .mypageModalTop {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #aeaeae;
+}
+#root .mypageModal .mypageModalTop .mypageProfile {
   display: flex;
   align-items: center;
 }
-#root .mypageModal .mypageModalList li svg{
+#root .mypageModal .mypageModalTop .mypageProfileImg {
+  width: 70px;
+  height: 70px;
+  display: inline-flex;
+  border-radius: 100%;
+  border: 1px solid #ececec;
+  overflow: hidden;
+}
+
+#root .mypageModal .mypageModalTop .mypageInfo {
+  margin-left: 20px;
+}
+#root .mypageModal .mypageModalTop .mypageInfo .mypageName {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+#root .mypageModal .mypageModalTop .mypageInfo .mypageId {
+  font-size: 14px;
+  font-weight: 600;
+  color: #aeaeae;
+}
+
+#root .mypageModal .mypageModalTop a {
+  font-size: 12px;
+}
+
+#root .mypageModal .mypageModalList li {
+  padding: 21px 10px;
+  border-bottom: 1px solid #dadada;
+}
+#root .mypageModal .mypageModalList li a {
+  display: flex;
+  align-items: center;
+}
+#root .mypageModal .mypageModalList li svg {
   height: 27px;
   width: 27px;
   margin-right: 12px;
 }
-#root .mypageModal .mypageModalList li p{
+#root .mypageModal .mypageModalList li p {
   font-size: 16px;
 }
+#root .mypageModal .mypageModalList li:hover svg {
+  stroke: #1340a2;
+}
+#root .mypageModal .mypageModalList li:hover p {
+  /* text-decoration: underline; */
+  color: #1340a2;
+  font-weight: 600;
+}
 
-#root .mypageModal .mypageModalBottom{
+#root .mypageModal .mypageModalBottom {
   color: #aeaeae;
   font-size: 16px;
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+/* 회원가입 완료 페이지 */
+#root .successWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 40px);
+  padding: 90px 0;
+}
+#root .successWrap svg {
+  width: 57px;
+  stroke: #1340a2;
+  margin-bottom: 29px;
+  stroke-width: 1px;
+}
+#root .successWrap p {
+  font-size: 20px;
+  margin-bottom: 69px;
+}
+#root .successWrap a {
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+/* 로그인 페이지 */
+#root .loginWrap .loginInput {
+  margin-bottom: 39px;
+  position: relative;
+}
+#root .loginWrap .loginInput p {
+  font-size: 17px;
+  font-weight: 500;
+}
+#root .loginWrap .loginInput i {
+  display: none;
+  font-size: 14px;
+  color: #d31616;
+  margin-bottom: -14px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+#root .loginWrap .loginBtn {
+  width: 100%;
+  font-size: 16px;
+}
+#root .loginWrap .loginBottom {
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+  margin-right: -17px;
+}
+#root .loginWrap .loginBottom li:not(:last-child)::after {
+  content: "";
+  display: inline-block;
+  border-right: 1px solid #868686;
+  height: 16px;
+  margin-right: 17px;
+  margin-bottom: -3px;
+}
+#root .loginWrap .loginBottom a {
+  color: #868686;
+  margin-right: 17px;
+}
+/* 에러시 나오는 부분 */
+#root .loginWrap .loginInput.error i {
+  display: block;
+}
+#root .loginWrap .loginInput.error input {
+  border-bottom: 1px solid #d31616;
 }
 
 /* ---------------- 푸터---------------- */
@@ -182,6 +296,7 @@ header .logo svg {
 #root .joinContainer form table tbody tr td .requiredMark {
   color: #d31616;
 }
+/* input 공통 훔침 위치 */
 #root .joinContainer form table tbody tr td > input {
   width: 100%;
   padding: 10px 0;
@@ -249,7 +364,16 @@ header .logo svg {
   align-items: flex-start;
 }
 
-#root .joinContainer form table tbody .termsContainer .termsList ul li input[type="checkbox"] {
+#root
+  .joinContainer
+  form
+  table
+  tbody
+  .termsContainer
+  .termsList
+  ul
+  li
+  input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   width: 20px;
