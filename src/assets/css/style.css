@@ -20,7 +20,7 @@
   padding: 10px 0;
   margin-bottom: 8px;
   border-bottom: 1px solid #aeaeae;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 /* 헤더 css */
@@ -193,7 +193,7 @@ header .logo svg {
   position: relative;
 }
 #root .loginWrap .loginInput p {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
 }
 #root .loginWrap .loginInput i {

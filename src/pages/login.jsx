@@ -9,25 +9,11 @@ export default function LoginPage() {
   const [pwError, setPwError] = useState(null);
 
   const handleSubmit = (e) => {
-    setIdError("error");
+    e.preventDefault();
     if (!userId) {
       setIdError("IDEMPTY");
-      if (!userPassword) {
-        setPwError("PWEMPTY");
-      } else if (userPassword !== "1234") {
-        setPwError("PWERROR");
-      } else {
-        setPwError(null);
-      }
     } else if (userId !== "admin") {
       setIdError("IDERROR");
-      if (!userPassword) {
-        setPwError("PWEMPTY");
-      } else if (userPassword !== "1234") {
-        setPwError("PWERROR");
-      } else {
-        setPwError(null);
-      }
     } else {
       setIdError(null);
       if (!userPassword) {
