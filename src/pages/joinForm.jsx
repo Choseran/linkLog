@@ -170,7 +170,7 @@ export default function JoinForm() {
     localStorage.setItem("currentUser", JSON.stringify(newUser));
 
     alert(`${userName}님, 가입을 축하합니다!`);
-    console.log("가입성공 및 메인 페이지로 이동");
+    console.log("가입성공! 메인 페이지로 이동");
 
     // 6. 메인 페이지로 이동
     navigate('/');
