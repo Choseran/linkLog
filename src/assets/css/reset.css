@@ -3,7 +3,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Pretendard Variable", Pretendard, sans-serif;
-    color: #1c1c1c;
+    /* 색상 수정 - 령경 */
+    color: #222;
 }
 
 *::before, *::after {

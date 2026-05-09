@@ -3,6 +3,7 @@ import Index from './pages';
 import Header from './components/header';
 import Footer from './components/footer';
 import JoinForm from './pages/joinForm';
+import InquiryForm from './pages/inquiryForm';
 
 function App() {
   return (
@@ -11,9 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Index />} />
         <Route path='/join' element={<JoinForm />} />
-        {/* 예시로 만든 없는 파일이라 활성화하면 오류납니다! */}
-        {/* <Route path='/detail' element={<Detail />} />
-        <Route path='/notice' element={<Notice />} /> */}
+        <Route path='/inquiryForm' element={<InquiryForm />} />
       </Routes>
       <Footer />
     </BrowserRouter>
