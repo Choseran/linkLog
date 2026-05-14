@@ -177,7 +177,7 @@ export default function JoinForm() {
   };
 
   return (
-    <section className="joinContainer">
+    <section className="joinContainer contentWrap">
       <form onSubmit={joinBtnHandler}>
         <h4>회원가입</h4>
         <table>

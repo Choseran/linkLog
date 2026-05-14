@@ -7,19 +7,23 @@ import JoinSuccess from "./pages/joinSuccess";
 import LoginPage from "./pages/login";
 import InquiryForm from './pages/inquiryForm';
 
+import { AuthProvider } from "./assets/context/AuthContext";
+
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/join" element={<JoinForm />} />
-        <Route path="/success" element={<JoinSuccess />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path='/inquiryForm' element={<InquiryForm />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/join" element={<JoinForm />} />
+          <Route path="/success" element={<JoinSuccess />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path='/inquiryForm' element={<InquiryForm />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

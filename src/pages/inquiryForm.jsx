@@ -1,7 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect  } from "react";
+import { useNavigate } from "react-router-dom";
 import "../assets/css/style.css";
 
+import { AuthContext } from "../assets/context/AuthContext";
+
 export default function InquiryForm(){
+    const navigate = useNavigate();
+
+    // 유저정보 가져오기
+    const { user } = useContext(AuthContext);
+
+    // 초기값 설정 (유저가 있으면 이름 넣고, 없으면 빈값)
+    const [userName] = useState(user ? user.name : "");
+    // 이메일
+    const [email, setEmail] = useState(user ? user.email : "");
+    // 제목
+    const [title, setTitle] = useState('');
+    // 내용
+    const [content, setContent] = useState('');
+    // 개인정보 수집이용 동의
+    const [isAgreed, setIsAgreed] = useState(false);
     // 문의유형 선택값을 담음
     const [selectedType, setSelectedType] = useState('');
     // 첨부파일 상태
@@ -10,10 +28,7 @@ export default function InquiryForm(){
     const [isDragging, setIsDragging] = useState(false);
 
     // 문의유형 핸들러
-    const selectBoxHandler = (e) => {
-        setSelectedType(e.target.value);
-        console.log('선택한 문의 유형 : ', e.target.value);
-    }
+    const selectBoxHandler = (e) => setSelectedType(e.target.value);
 
     // 첨부파일 추가 핸들러
     const fileAddHandler = (e) => {
@@ -56,9 +71,45 @@ export default function InquiryForm(){
         setIsDragging(false);  // 드롭 완료 후 false
     }
 
+    // 문의 배열(로컬)에 추가하는 핸들러
+    const submitHandler = (e) => {
+        e.preventDefault(); // 페이지 새로고침 방지
+
+        // 필수 항목 유효성 검사 로직
+        if (!user) return alert("로그인이 필요한 서비스입니다.");
+        if (!email.trim()) return alert("이메일을 입력해 주세요.");
+        if (!selectedType) return alert("문의 유형을 선택해 주세요.");
+        if (!title.trim()) return alert("제목을 입력해 주세요.");
+        if (!content.trim()) return alert("내용을 입력해 주세요.");
+        if (!isAgreed) return alert("개인정보 수집 동의가 필요합니다.");
+
+        // 저장할 데이터 객체 만들기
+        const newInquiry = { // 변수명 통일
+            inquiryId: Date.now(),
+            userName: userName,
+            userEmail: email,
+            type: selectedType,
+            title: title,
+            content: content,
+            date: new Date().toLocaleDateString(),
+            files: fileList.map(file => file.name)
+        };
+
+        // 기존 문의 내역에 추가
+        const existingInquiries = JSON.parse(localStorage.getItem("inquiryList") || "[]");
+        const updatedInquiries = [...existingInquiries, newInquiry];
+
+        // 로컬 스토리지에 다시 저장
+        localStorage.setItem("inquiryList", JSON.stringify(updatedInquiries));
+
+        alert("문의가 접수되었습니다.");
+        
+        navigate("/")
+    }
+
     return(
-       <section className="inquiryFormContainer">
-            <form>
+       <section className="inquiryFormContainer contentWrap">
+            <form onSubmit={submitHandler}>
                 <h4>문의하기</h4>
                 <p>궁금한 점이나 불편한 사항을 남겨주세요.</p>
                 <p className="inquiryGuide">빠르게 답변드리겠습니다.</p>
@@ -69,8 +120,11 @@ export default function InquiryForm(){
                                 <span className="requiredMark">*</span> 닉네임
                             </td>
                             <td>
-                                <input type="text"
-                                placeholder="닉네임을 입력하세요."
+                                <input 
+                                    type="text" 
+                                    value={userName} 
+                                    readOnly // 수정 불가능
+                                    placeholder="로그인이 필요합니다."
                                 />
                             </td>
                         </tr>
@@ -79,8 +133,11 @@ export default function InquiryForm(){
                                 <span className="requiredMark">*</span> 이메일
                             </td>
                             <td>
-                                <input type="text"
-                                placeholder="이메일을 입력하세요."
+                                <input 
+                                    type="text" 
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="이메일을 입력하세요."
                                 />
                             </td>
                         </tr>
@@ -91,9 +148,9 @@ export default function InquiryForm(){
                             <td>
                                 <select value={selectedType} onChange={selectBoxHandler}>
                                     <option value="" disabled hidden>유형을 선택해주세요.</option>
-                                    <option value="error">일반</option>
-                                    <option value="error">오류 및 버그신고</option>
-                                    <option value="error">기타</option>
+                                    <option value="normal">일반</option>
+                                    <option value="bug">오류 및 버그신고</option>
+                                    <option value="etc">기타</option>
                                 </select>
                             </td>
                         </tr>
@@ -102,8 +159,11 @@ export default function InquiryForm(){
                                 <span className="requiredMark">*</span> 제목
                             </td>
                             <td>
-                                <input type="text"
-                                placeholder="제목을 입력하세요."
+                                <input 
+                                    type="text"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    placeholder="제목을 입력하세요."
                                 />
                             </td>
                         </tr>
@@ -112,8 +172,10 @@ export default function InquiryForm(){
                                 <span className="requiredMark">*</span> 문의내용
                             </td>
                             <td>
-                                <textarea type="text"
-                                placeholder="내용을 입력하세요."
+                                <textarea 
+                                    value={content} 
+                                    onChange={(e) => setContent(e.target.value)} 
+                                    placeholder="내용을 입력하세요."
                                 />
                             </td>
                         </tr>
@@ -136,8 +198,11 @@ export default function InquiryForm(){
                                     <ul className="fileList">
                                         {fileList.map((file, index) => (
                                             <li key={`${file.name}-${index}`}>
-                                                {/* svg 코드 넣어야됨!!! */}
-                                                <svg onClick={() => fileDeleteHandler(index)}></svg>
+                                                <button type="button" onClick={() => fileDeleteHandler(index)}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
                                                 <p>{file.name}</p>
                                             </li>
                                         ))}
@@ -147,7 +212,12 @@ export default function InquiryForm(){
                         </tr>
                         <tr>
                             <td className="inquiryFormTerm">
-                                <input type="checkbox" id="term"/>
+                                <input 
+                                    type="checkbox" 
+                                    id="term" 
+                                    checked={isAgreed}
+                                    onChange={(e) => setIsAgreed(e.target.checked)}
+                                />
                                 <label htmlFor='term'>개인정보 수집·이용에 동의합니다.</label>
                             </td>
                         </tr>

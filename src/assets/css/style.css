@@ -19,7 +19,8 @@
 }
 /* input 공통 */
 /* 님꺼 가져오면서 margin-bottom 수치만 수정함 */
-#root input {
+/* #root input { */
+#root input[type='text'] {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 8px;
@@ -270,12 +271,12 @@ header .logo svg {
 
 /* ---------------- 회원가입 ---------------- */
 /* 회원가입 전체 */
-#root .joinContainer form {
+/* #root .joinContainer form {
   margin: 20px;
   padding: 20px;
   background-color: #fff;
   border-radius: 20px;
-}
+} */
 /* 회원가입 타이틀 */
 #root .joinContainer h4 {
   font-size: 20px;
@@ -536,12 +537,12 @@ header .logo svg {
 
 /* ---------------- 문의하기 ---------------- */
 /* 회원가입 전체 */
-#root .inquiryFormContainer form {
+/* #root .inquiryFormContainer form {
   margin: 20px;
   padding: 20px;
   background-color: #fff;
   border-radius: 20px;
-}
+} */
 /* 회원가입 타이틀 */
 #root .inquiryFormContainer form h4 {
   font-size: 20px;
@@ -640,12 +641,17 @@ header .logo svg {
   width: 20px;
   height: 20px;
 }
+/* 개인정보 수집 */
 #root .inquiryFormContainer form table tbody tr .inquiryFormTerm{
   display: flex;
+  /* justify-content: center; */
   align-items: center;
   border-top: 1px solid #aeaeae;
   padding-top: 30px;
   font-size: 16px;
+}
+#root .inquiryFormContainer form table tbody tr .inquiryFormTerm input{
+  margin-right: 5px;
 }
 
 /* 제출하기 버튼 */
@@ -661,3 +667,7 @@ header .logo svg {
   font-size: 15px;
   color: #555;
 }
+
+/* @media screen and (max-width: 480px) {
+
+} */
