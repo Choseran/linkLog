@@ -134,8 +134,14 @@ export default function JoinForm() {
 
     // 3. 중단 로직: 하나라도 true(에러)가 있으면 가입 중단
     if (Object.values(newErrors).some((error) => error === true)) {
-      if (newErrors.userId && isIdCHk === null) {
+      if (newErrors.userName){
+        alert("닉네임을 입력해주세요.");
+      } else if (newErrors.userId && isIdCHk === null) {
         alert("아이디 중복확인을 해주세요.");
+      } else if (newErrors.userPassword) {
+        alert("비밀번호를 입력해주세요.");
+      } else if (newErrors.userPasswordChk) {
+        alert("비밀번호 확인을 입력해주세요.");
       } else if (newErrors.terms) {
         alert("필수 약관에 동의해야 가입이 가능합니다.");
       } else {
@@ -170,10 +176,9 @@ export default function JoinForm() {
     localStorage.setItem("currentUser", JSON.stringify(newUser));
 
     alert(`${userName}님, 가입을 축하합니다!`);
-    console.log("가입성공! 메인 페이지로 이동");
 
-    // 6. 메인 페이지로 이동
-    navigate('/');
+    // 6. 회원가입 완료 페이지로 이동
+    navigate('/success');
   };
 
   return (

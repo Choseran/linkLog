@@ -20,7 +20,8 @@
 /* input 공통 */
 /* 님꺼 가져오면서 margin-bottom 수치만 수정함 */
 /* #root input { */
-#root input[type='text'] {
+#root input[type='text'],
+#root input[type='password'] {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 8px;
@@ -246,6 +247,9 @@ header .logo svg {
 #root footer {
   text-align: center;
   margin-top: 120px; /* 하단 여백 */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 #root footer p {

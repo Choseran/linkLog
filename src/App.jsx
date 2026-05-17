@@ -19,7 +19,7 @@ function App() {
           <Route path="/join" element={<JoinForm />} />
           <Route path="/success" element={<JoinSuccess />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path='/inquiryForm' element={<InquiryForm />} />
+          <Route path='/inquiry' element={<InquiryForm />} />
         </Routes>
         <Footer />
       </BrowserRouter>
