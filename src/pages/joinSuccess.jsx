@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function JoinSuccess() {
   return (
     <div className="successWrap contentWrap">
@@ -16,9 +18,9 @@ export default function JoinSuccess() {
         />
       </svg>
       <p className="successTitle">회원가입이 완료되었습니다.</p>
-      <a href="/login" className="btn">
+      <Link to="/login" className="btn">
         로그인
-      </a>
+      </Link>
     </div>
   );
 }

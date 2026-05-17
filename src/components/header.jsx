@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import "../assets/css/style.css";
 
 import profileImg from "../assets/img/profile_image.jpg";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [mypage, setMypage] = useState(false);
@@ -10,7 +11,7 @@ export default function Header() {
   return (
     <>
       <header>
-        <a className={"logo"} href="/">
+        <Link className="logo" to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 252 42"
@@ -52,7 +53,7 @@ export default function Header() {
               </g>
             </g>
           </svg>
-        </a>
+        </Link>
         <button onClick={() => setMypage(true)}>
           {/* <img src={hamMenu} alt="menuBtn" /> */}
           {/* 이거 이미지로 다운 안 받고 이렇게 써도 돼요!
@@ -115,14 +116,14 @@ export default function Header() {
                   <p className={"mypageId"}>@linkLog</p>
                 </div>
               </div>
-              <a href="#" className={"infoEditBtn btn"}>
+              <Link href="#" className={"infoEditBtn btn"}>
                 정보수정
-              </a>
+              </Link>
             </div>
             {/* 마이페이지 모달 메뉴 리스트 */}
             <ul className={"mypageModalList"}>
               <li>
-                <a href="">
+                <Link to="/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -138,10 +139,10 @@ export default function Header() {
                     />
                   </svg>
                   <p>공지사항</p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="">
+                <Link to="/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -157,10 +158,10 @@ export default function Header() {
                     />
                   </svg>
                   <p>자주 묻는 Q&A</p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="">
+                <Link to="/">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -176,10 +177,10 @@ export default function Header() {
                     />
                   </svg>
                   <p>업데이트 노트</p>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="">
+                <Link to="/InquiryForm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -195,11 +196,13 @@ export default function Header() {
                     />
                   </svg>
                   <p>문의하기</p>
-                </a>
+                </Link>
               </li>
             </ul>
             {/* 마이페이지 모달 하단 */}
-            <a className={"mypageModalBottom"}>탈퇴하기</a>
+            <Link to="/" className={"mypageModalBottom"}>
+              탈퇴하기
+            </Link>
           </div>
         </div>
       )}

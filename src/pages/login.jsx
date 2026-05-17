@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -55,19 +55,19 @@ export default function LoginPage() {
       </button>
       <ul className="loginBottom">
         <li>
-          <a href="/join" className="joinLink">
+          <Link to="/join" className="joinLink">
             회원가입
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/join" className="joinLink">
+          <Link to="/join" className="joinLink">
             아이디 찾기
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/join" className="joinLink">
+          <Link href="/join" className="joinLink">
             비밀번호 찾기
-          </a>
+          </Link>
         </li>
       </ul>
     </form>
