@@ -180,7 +180,7 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link to="/InquiryForm">
+                <Link to="/Inquiry">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

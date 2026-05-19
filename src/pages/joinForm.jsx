@@ -182,7 +182,7 @@ export default function JoinForm() {
   };
 
   return (
-    <section className="joinContainer contentWrap">
+    <section className="joinContainer contentWrap">x
       <form onSubmit={joinBtnHandler}>
         <h4>회원가입</h4>
         <table>
@@ -334,7 +334,6 @@ export default function JoinForm() {
                   onChange={passwordChkHandler}
                   //  placeholder 문구 확인필요
                   placeholder="비밀번호를 다시 입력하세요."
-                  disabled={!userPassword}
                 />
                 {/* 비밀번호 확인문구 */}
                 {userPasswordChk && (

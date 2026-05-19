@@ -31,9 +31,10 @@ body에 써도 괜찮지만 웬만하면 #root에 쓰는게
 안전하다고 배웠읍니다 */
 #root {
     width: 100%;
-    min-height: 1000px;
+    min-height: 100vh;
     background-color: #F6F8F8;
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 img, svg {
