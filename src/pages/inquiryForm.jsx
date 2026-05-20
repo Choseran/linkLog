@@ -72,7 +72,7 @@ export default function InquiryForm(){
     }
 
     // 문의 배열(로컬)에 추가하는 핸들러
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault(); // 페이지 새로고침 방지
 
         // 필수 항목 유효성 검사 로직
@@ -84,7 +84,7 @@ export default function InquiryForm(){
         if (!isAgreed) return alert("개인정보 수집 동의가 필요합니다.");
 
         // 저장할 데이터 객체 만들기
-        const newInquiry = { // 변수명 통일
+        const newInquiry = {
             inquiryId: Date.now(),
             userName: userName,
             userEmail: email,
@@ -95,16 +95,47 @@ export default function InquiryForm(){
             files: fileList.map(file => file.name)
         };
 
-        // 기존 문의 내역에 추가
-        const existingInquiries = JSON.parse(localStorage.getItem("inquiryList") || "[]");
-        const updatedInquiries = [...existingInquiries, newInquiry];
+        try {
+            // 백엔드 API 서버로 데이터 전송 구문 추가
+            const response = await fetch("http://localhost:5000/api/inquiry", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newInquiry), // 객체를 JSON 문자열로 변환해서 전송
+            });
 
-        // 로컬 스토리지에 다시 저장
-        localStorage.setItem("inquiryList", JSON.stringify(updatedInquiries));
+            const result = await response.json();
 
-        alert("문의가 접수되었습니다.");
+            if (result.success) {
+                // 백엔드(구글 시트) 저장 성공 시 기존 로컬 스토리지 백업 진행
+                const existingInquiries = JSON.parse(localStorage.getItem("inquiryList") || "[]");
+                const updatedInquiries = [...existingInquiries, newInquiry];
+                localStorage.setItem("inquiryList", JSON.stringify(updatedInquiries));
+
+                alert("문의가 접수되었습니다.");
+                navigate("/");
+            } else {
+                // 백엔드에서 에러 메시지를 던진 경우
+                alert(`접수 실패: ${result.message}`);
+            }
+
+        } catch (error) {
+            // 서버가 꺼져있거나 네트워크 연결이 안 될 때 처리
+            console.error("백엔드 연동 에러:", error);
+            alert("백엔드 서버와 연결할 수 없습니다. 서버(node server.js)가 켜져 있는지 확인하세요.");
+        }
+
+        // // 기존 문의 내역에 추가
+        // const existingInquiries = JSON.parse(localStorage.getItem("inquiryList") || "[]");
+        // const updatedInquiries = [...existingInquiries, newInquiry];
+
+        // // 로컬 스토리지에 다시 저장
+        // localStorage.setItem("inquiryList", JSON.stringify(updatedInquiries));
+
+        // alert("문의가 접수되었습니다.");
         
-        navigate("/")
+        // navigate("/")
     }
 
     return(
