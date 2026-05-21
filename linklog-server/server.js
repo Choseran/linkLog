@@ -68,5 +68,5 @@ app.post('/api/inquiry', async (req, res) => {
 
 // 서버 실행
 app.listen(PORT, () => {
-  console.log(`백엔드 서버가 http://localhost:${PORT} 에서 돌아가는 중입니다.`);
+  console.log(`백엔드 대체 서버가 http://localhost:${PORT} 에서 돌아가는 중입니다.`);
 });
