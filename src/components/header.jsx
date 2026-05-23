@@ -1,12 +1,36 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "../assets/css/style.css";
 
-import profileImg from "../assets/img/profile_image.jpg";
+import { AuthContext } from "../assets/context/AuthContext";
+
 import { Link } from "react-router-dom";
 
 export default function Header() {
   const [mypage, setMypage] = useState(false);
-  // 마이페이지 모달을 열었을 때 바탕을 눌러도 닫을 수 있도록 선언함
+
+  // 마이페이지 모달창 내부 로그인한 유저 정보로 뜨게 하기 위해 AuthContext에서 user 정보 가져오기
+  const { user } = useContext(AuthContext);
+  const [userName] = useState(user ? user.name : "");
+  const [userId, setUserId] = useState(user ? user.id : "");
+
+  // 마이페이지 모달창 밖 클릭 시 모달창 닫히게 하기 위해 useRef로 마이페이지 버튼과 모달창 요소 참조하기
+  const mypageBtnRef = useRef(null);
+  const mypageRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        mypage &&
+        !mypageBtnRef.current?.contains(e.target) &&
+        !mypageRef.current?.contains(e.target)
+      ) {
+        setMypage(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [mypage]);
 
   return (
     <>
@@ -54,7 +78,7 @@ export default function Header() {
             </g>
           </svg>
         </Link>
-        <button onClick={() => setMypage(true)}>
+        <button ref={mypageBtnRef} onClick={() => setMypage(true)}>
           {/* <img src={hamMenu} alt="menuBtn" /> */}
           {/* 이거 이미지로 다운 안 받고 이렇게 써도 돼요!
             홈페이지에서 copy svg 눌러서 바로 붙인거임 */}
@@ -84,7 +108,10 @@ export default function Header() {
       {/* 마이페이지 모달창 */}
       {mypage && (
         <div className={`mypageWrap ${setMypage ? "mypageModalBackOpen" : ""}`}>
-          <div className={`mypageModal ${setMypage ? "mypageModalOpen" : ""}`}>
+          <div
+            ref={mypageRef}
+            className={`mypageModal ${setMypage ? "mypageModalOpen" : ""}`}
+          >
             {/* 마이페이지 모달 닫기 버튼 */}
             <button
               className={"mypageModalBtn"}
@@ -107,23 +134,23 @@ export default function Header() {
             </button>
             {/* 마이페이지 모달 메뉴 프로필 */}
             <div className={"mypageModalTop"}>
-              <div className={"mypageProfile"}>
-                <div className={"mypageProfileImg"}>
-                  <img src={profileImg} alt="mypageProfile" />
-                </div>
-                <div className={"mypageInfo"}>
-                  <p className={"mypageName"}>링크로그</p>
-                  <p className={"mypageId"}>@linkLog</p>
-                </div>
+              <div className={"mypageInfo"}>
+                <p className={"mypageName"}>{userName}</p>
+                <p className={"mypageId"}>@{userId}</p>
               </div>
-              <Link href="#" className={"infoEditBtn btn"}>
-                정보수정
+              <Link to="/" className={"infoEditBtn btn"}>
+                로그아웃
               </Link>
             </div>
             {/* 마이페이지 모달 메뉴 리스트 */}
             <ul className={"mypageModalList"}>
               <li>
-                <Link to="/">
+                <Link
+                  to="/"
+                  onClick={() => {
+                    setMypage(false);
+                  }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -142,7 +169,12 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link to="/">
+                <Link
+                  to="/"
+                  onClick={() => {
+                    setMypage(false);
+                  }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -161,7 +193,12 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link to="/">
+                <Link
+                  to="/"
+                  onClick={() => {
+                    setMypage(false);
+                  }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -180,7 +217,12 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link to="/Inquiry">
+                <Link
+                  to="/Inquiry"
+                  onClick={() => {
+                    setMypage(false);
+                  }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -200,7 +242,13 @@ export default function Header() {
               </li>
             </ul>
             {/* 마이페이지 모달 하단 */}
-            <Link to="/" className={"mypageModalBottom"}>
+            <Link
+              to="/"
+              className={"mypageModalBottom"}
+              onClick={() => {
+                setMypage(false);
+              }}
+            >
               탈퇴하기
             </Link>
           </div>

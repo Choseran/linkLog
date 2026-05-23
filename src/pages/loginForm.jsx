@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function LoginPage() {
+export default function LoginForm() {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");

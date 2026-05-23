@@ -44,8 +44,8 @@ export default function JoinForm() {
 
     // 아이디 유효성 검사 (3~12자, 영문, 숫자, -, _ 만 가능)
     const idReg = /^[a-zA-Z0-9-_]{3,12}$/;
-    if(!idReg.test(userId)){
-      setIsIdChk('invalid');  // 형식이 맞지않음
+    if (!idReg.test(userId)) {
+      setIsIdChk("invalid"); // 형식이 맞지않음
       return;
     }
 
@@ -92,7 +92,8 @@ export default function JoinForm() {
   };
 
   // 전체 동의 여부 계산 (모두 true일 때만 true)
-  const isAllChecked = checkedItems.service && checkedItems.privacy && checkedItems.marketing;
+  const isAllChecked =
+    checkedItems.service && checkedItems.privacy && checkedItems.marketing;
 
   // 전체 동의 클릭 시 함수
   const handleAllCheck = (e) => {
@@ -134,7 +135,7 @@ export default function JoinForm() {
 
     // 3. 중단 로직: 하나라도 true(에러)가 있으면 가입 중단
     if (Object.values(newErrors).some((error) => error === true)) {
-      if (newErrors.userName){
+      if (newErrors.userName) {
         alert("닉네임을 입력해주세요.");
       } else if (newErrors.userId && isIdCHk === null) {
         alert("아이디 중복확인을 해주세요.");
@@ -162,27 +163,27 @@ export default function JoinForm() {
 
     // 5. 로컬 스토리지 데이터 처리
     const existingUsers = JSON.parse(localStorage.getItem("userList") || "[]");
-    
+
     // 최종 중복 방어 체크 (데이터 무결성을 위해 한 번 더 확인)
-    if (existingUsers.some(user => user.id === userId)) {
-        alert("이미 가입된 아이디입니다.");
-        return;
+    if (existingUsers.some((user) => user.id === userId)) {
+      alert("이미 가입된 아이디입니다.");
+      return;
     }
 
     existingUsers.push(newUser);
     localStorage.setItem("userList", JSON.stringify(existingUsers));
-    
+
     // 현재 가입한 유저를 바로 로그인 처리
     localStorage.setItem("currentUser", JSON.stringify(newUser));
 
     alert(`${userName}님, 가입을 축하합니다!`);
 
     // 6. 회원가입 완료 페이지로 이동
-    navigate('/success');
+    navigate("/success");
   };
 
   return (
-    <section className="joinContainer contentWrap">x
+    <section className="joinContainer contentWrap">
       <form onSubmit={joinBtnHandler}>
         <h4>회원가입</h4>
         <table>
@@ -195,7 +196,9 @@ export default function JoinForm() {
                 <input
                   type="text"
                   value={userName}
-                  onChange={(e) => {setUserName(e.target.value)}}
+                  onChange={(e) => {
+                    setUserName(e.target.value);
+                  }}
                   className={errors.userName ? "errorBorder" : ""}
                   placeholder="닉네임을 입력하세요."
                 />
@@ -215,20 +218,25 @@ export default function JoinForm() {
                 />
                 <button
                   type="button"
-                  className={`checkDuplicateBtn ${!userId ? 'inputEmpty' : ''}`}
+                  className={`checkDuplicateBtn ${!userId ? "inputEmpty" : ""}`}
                   onClick={idCheck}
                 >
                   중복확인
                 </button>
                 {/* 사용 가능, 불가능 문구 */}
-                {isIdCHk !== null &&(
-                  <div className={`idpwchk ${isIdCHk === true ? 'true' : 'false'}`}>
+                {isIdCHk !== null && (
+                  <div
+                    className={`idpwchk ${isIdCHk === true ? "true" : "false"}`}
+                  >
                     {isIdCHk === true && <p>사용 가능한 아이디 입니다.</p>}
                     {isIdCHk === false && <p>존재하는 아이디 입니다.</p>}
-                    {isIdCHk === 'invalid' && <p>아이디는 3~12자의 영문, 숫자, -, _ 만 사용 가능합니다.</p>}
+                    {isIdCHk === "invalid" && (
+                      <p>
+                        아이디는 3~12자의 영문, 숫자, -, _ 만 사용 가능합니다.
+                      </p>
+                    )}
                   </div>
-                )
-                }
+                )}
               </td>
             </tr>
             <tr>
@@ -395,7 +403,12 @@ export default function JoinForm() {
                       checked={isAllChecked} // 전체가 true면 자동 체크
                       onChange={handleAllCheck}
                     />
-                    <label htmlFor="allAgreeCheck" className={errors.userId ? "errorCheckBox" : ""}>전체 동의</label>
+                    <label
+                      htmlFor="allAgreeCheck"
+                      className={errors.userId ? "errorCheckBox" : ""}
+                    >
+                      전체 동의
+                    </label>
                   </li>
                   {/* 개별 약관 */}
                   {termsData.map((terms) => (
@@ -407,7 +420,12 @@ export default function JoinForm() {
                           checked={checkedItems[terms.id]} // 내 상태 연결
                           onChange={() => handleCheck(terms.id)}
                         />
-                        <label htmlFor={terms.id} className={errors.userId ? "errorCheckBox" : ""}>{terms.title}</label>
+                        <label
+                          htmlFor={terms.id}
+                          className={errors.userId ? "errorCheckBox" : ""}
+                        >
+                          {terms.title}
+                        </label>
                         <button
                           type="button"
                           className={`viewDetailBtn ${openTerms[terms.id] ? "open" : ""}`}
@@ -430,7 +448,9 @@ export default function JoinForm() {
           </tbody>
         </table>
         {/* 페이지 이동 */}
-        <button type="submit" className="btn">가입하기</button>
+        <button type="submit" className="btn">
+          가입하기
+        </button>
       </form>
     </section>
   );

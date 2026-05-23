@@ -5,7 +5,7 @@
   border-radius: 5px;
   padding: 10px 16px;
 }
-#root .btn:hover{
+#root .btn:hover {
   background-color: #062b7a;
 }
 
@@ -19,8 +19,8 @@
 }
 /* input 공통 */
 /* #root input { */
-#root input[type='text'],
-#root input[type='password'] {
+#root input[type="text"],
+#root input[type="password"] {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 8px;
@@ -104,21 +104,9 @@ header .logo svg {
   padding-bottom: 30px;
   border-bottom: 2px solid #aeaeae;
 }
-#root .mypageModal .mypageModalTop .mypageProfile {
-  display: flex;
-  align-items: center;
-}
-#root .mypageModal .mypageModalTop .mypageProfileImg {
-  width: 70px;
-  height: 70px;
-  display: inline-flex;
-  border-radius: 100%;
-  border: 1px solid #ececec;
-  overflow: hidden;
-}
 
 #root .mypageModal .mypageModalTop .mypageInfo {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 #root .mypageModal .mypageModalTop .mypageInfo .mypageName {
   font-size: 20px;
@@ -314,30 +302,30 @@ header .logo svg {
 }
 
 /* 아이디 */
-#root .joinContainer form table .idpwchk{
+#root .joinContainer form table .idpwchk {
   font-size: 15px;
   display: flex;
 }
 
 /* 사용 불가능 */
-#root .joinContainer form table .idpwchk svg{
+#root .joinContainer form table .idpwchk svg {
   width: 18px;
   margin-right: 5px;
 }
 /* 조건 충족 */
-#root .joinContainer form table .true p{
+#root .joinContainer form table .true p {
   color: #11a11b;
 }
-#root .joinContainer form table .true svg{
+#root .joinContainer form table .true svg {
   stroke: #11a11b;
 }
 /* 조건 불충족 */
 #root .joinContainer form table .false p,
-#root .joinContainer form table .invalid p{
+#root .joinContainer form table .invalid p {
   color: #d31616;
 }
 #root .joinContainer form table .false svg,
-#root .joinContainer form table .invalid svg{
+#root .joinContainer form table .invalid svg {
   stroke: #d31616;
 }
 
@@ -354,7 +342,7 @@ header .logo svg {
   background-color: #062b7a;
 }
 
-#root .joinContainer form table tbody tr td .checkDuplicateBtn.inputEmpty{
+#root .joinContainer form table tbody tr td .checkDuplicateBtn.inputEmpty {
   background-color: #dadada;
 }
 
@@ -405,7 +393,16 @@ header .logo svg {
   width: 25px;
   height: 25px;
 } */
-#root .joinContainer form table tbody .termsContainer .termsList ul li.allAgreeCheck label{
+#root
+  .joinContainer
+  form
+  table
+  tbody
+  .termsContainer
+  .termsList
+  ul
+  li.allAgreeCheck
+  label {
   font-size: 18px;
 }
 
@@ -505,16 +502,16 @@ header .logo svg {
 
 /* 가입하기 조건 미충족시 항목별 표시 */
 /* input */
-#root .joinContainer form table tbody .errorBorder{
+#root .joinContainer form table tbody .errorBorder {
   /* 기존 빨간색 잘 안보여서 색 바꿈!!!!!!!!!!!!!!!!!!!! */
   border-bottom: 1px solid #f71717 !important;
 }
-#root .joinContainer form table tbody .errorBorder::placeholder{
+#root .joinContainer form table tbody .errorBorder::placeholder {
   color: #d31616;
 }
 /* 체크박스 */
-#root .joinContainer form table tbody .errorCheckBox{
-  color: #d31616
+#root .joinContainer form table tbody .errorCheckBox {
+  color: #d31616;
 }
 
 /* ---------------- 문의하기 ---------------- */
@@ -531,7 +528,7 @@ header .logo svg {
   font-weight: bold;
   margin-bottom: 10px;
 }
-#root .inquiryFormContainer form .inquiryGuide{
+#root .inquiryFormContainer form .inquiryGuide {
   margin-bottom: 30px;
 }
 /* 입력 폼 공통 서식 */
@@ -552,7 +549,7 @@ header .logo svg {
 /* 입력박스 공통 */
 #root .inquiryFormContainer form table tbody tr td input[type="text"],
 #root .inquiryFormContainer form table tbody tr td select,
-#root .inquiryFormContainer form table tbody tr td textarea{
+#root .inquiryFormContainer form table tbody tr td textarea {
   width: 100%;
   border: 1px solid #aeaeae;
   border-radius: 5px;
@@ -561,7 +558,7 @@ header .logo svg {
   font-size: 16px;
 }
 /* 문의 유형 */
-#root .inquiryFormContainer form table tbody tr td select{
+#root .inquiryFormContainer form table tbody tr td select {
   appearance: none;
   /* url()안에 아래 화살표 svg 추가해야됨 */
   background-image: url("data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23999'%3E%3Cpath stroke-lineCap='round' stroke-linejoin='rounf' d='m19.5 8.25-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
@@ -573,26 +570,42 @@ header .logo svg {
   outline: none;
   transition: border-color 0.2s;
 }
-#root .inquiryFormContainer form table tbody tr td select:invalid, 
-#root .inquiryFormContainer form table tbody tr td select option[value=""]{
+#root .inquiryFormContainer form table tbody tr td select:invalid,
+#root .inquiryFormContainer form table tbody tr td select option[value=""] {
   /* color: #aeaeae; */
   color: red;
 }
 /* 문의내용 */
-#root .inquiryFormContainer form table tbody tr td textarea{
+#root .inquiryFormContainer form table tbody tr td textarea {
   min-height: 200px;
   resize: none;
 }
 /* 첨부파일 */
-#root .inquiryFormContainer form table tbody .fileUploadTr td label input[type="file"]{
+#root
+  .inquiryFormContainer
+  form
+  table
+  tbody
+  .fileUploadTr
+  td
+  label
+  input[type="file"] {
   display: none;
 }
-#root .inquiryFormContainer form table tbody .fileUploadTr td label{
+#root .inquiryFormContainer form table tbody .fileUploadTr td label {
   display: block;
   cursor: pointer;
   width: 100%;
 }
-#root .inquiryFormContainer form table tbody .fileUploadTr td label .fileUploadBox{
+#root
+  .inquiryFormContainer
+  form
+  table
+  tbody
+  .fileUploadTr
+  td
+  label
+  .fileUploadBox {
   width: 100%;
   height: 80px;
   border: 1px dashed #ccc;
@@ -600,31 +613,48 @@ header .logo svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition:  all 0.2s ease;
+  transition: all 0.2s ease;
 }
-#root .inquiryFormContainer form table tbody .fileUploadTr td label .fileUploadBox.active{
+#root
+  .inquiryFormContainer
+  form
+  table
+  tbody
+  .fileUploadTr
+  td
+  label
+  .fileUploadBox.active {
   background-color: #f0f8ff;
   border-color: #062b7a;
 }
-#root .inquiryFormContainer form table tbody .fileUploadTr td label .fileUploadBox p{
+#root
+  .inquiryFormContainer
+  form
+  table
+  tbody
+  .fileUploadTr
+  td
+  label
+  .fileUploadBox
+  p {
   /* font-size: 25px; */
   font-size: 16px;
   color: #999;
 }
 
 /* 첨부파일 목록 */
-#root .inquiryFormContainer form table tbody .fileUploadTr td .fileList{
+#root .inquiryFormContainer form table tbody .fileUploadTr td .fileList {
   margin-top: 10px;
 }
-#root .inquiryFormContainer form table tbody .fileUploadTr td .fileList li{
+#root .inquiryFormContainer form table tbody .fileUploadTr td .fileList li {
   display: flex;
 }
-#root .inquiryFormContainer form table tbody .fileUploadTr td .fileList svg{
+#root .inquiryFormContainer form table tbody .fileUploadTr td .fileList svg {
   width: 20px;
   height: 20px;
 }
 /* 개인정보 수집 */
-#root .inquiryFormContainer form table tbody tr .inquiryFormTerm{
+#root .inquiryFormContainer form table tbody tr .inquiryFormTerm {
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -632,18 +662,18 @@ header .logo svg {
   padding-top: 30px;
   font-size: 16px;
 }
-#root .inquiryFormContainer form table tbody tr .inquiryFormTerm input{
+#root .inquiryFormContainer form table tbody tr .inquiryFormTerm input {
   margin-right: 5px;
 }
 
 /* 제출하기 버튼 */
-#root .inquiryFormContainer form .btn{
+#root .inquiryFormContainer form .btn {
   margin-top: 20px;
   width: 100%;
 }
 
 /* 평균답변시간 span */
-#root .inquiryFormContainer form .responseTime{
+#root .inquiryFormContainer form .responseTime {
   text-align: center;
   margin-top: 30px;
   font-size: 15px;
@@ -652,7 +682,7 @@ header .logo svg {
 
 /* ---------------- 데스크탑 css ---------------- */
 @media screen and (min-width: 480px) {
-  #root .contentWrap{
+  #root .contentWrap {
     width: 765px;
     /* width: 60%; */
   }
