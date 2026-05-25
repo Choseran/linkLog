@@ -156,6 +156,99 @@ header .logo svg {
   right: 20px;
 }
 
+/* ---------------- 메인 index ---------------- */
+#root .indexContainer{
+  padding: 0 20px;
+}
+/* 월 / 월 이동 화살표 */
+#root .indexContainer .calendarHeader{
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+#root .indexContainer .calendarHeader > button svg{
+  width: 28px;
+  stroke: #1340A2;
+  stroke-width: 2px;
+}
+#root .indexContainer .calendarHeader .currentMonth{
+  font-size: 20px;
+}
+
+/* 캘린더 */
+#root .indexContainer .calendarBody .react-calendar{
+  
+}
+/* 월~일 요일 표시 줄 */
+#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__weekdays{
+  display: flex !important;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none; /* 밑줄 제거 */
+}
+/* 월 전체 - 날짜 타일들이 모여 있는 grid 영역 */
+#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days{
+  /* 캘린더 높이 */
+  /* height: 420px; */
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: #E0E0E0;
+  gap: 1px;
+  border: 1px solid #E0E0E0;
+}
+/* 일 - 각 날짜 버튼 (여기에 배경 이미지가 들어가야 함) */
+#root .indexContainer .calendarBody .react-calendar .react-calendar__tile{
+  /* 캘린더 높이대신 비율로 */
+  aspect-ratio: 1 / 1.6;
+  position: relative;
+  /* border: 1px solid #E0E0E0; */
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 5px;
+}
+/* 일기 있는 날 - 배경 꽉차게 */
+#root .indexContainer .calendarBody .react-calendar__tile.has-diary{
+  background-image: url();
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+/* 마우스 오버 및 선택되었을 때 배경색 변경 */
+#root .indexContainer .calendarBody .react-calendar__tile:enabled:hover,
+#root .indexContainer .calendarBody .react-calendar__tile:enabled:focus,
+#root .indexContainer .calendarBody .react-calendar__tile--active {
+  background-color: transparent;
+}
+/* 현재 월이 아닌 이전달/다음달 날짜 흐리게 */
+#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth {
+  /* 방법1 */
+  /* visibility: hidden; */
+
+  /* 방법2 - 오퍼시티 죽어야됨 */
+  /* 흠 근데 이건 계속 살려두는 게 좋을 것 같음! */
+  cursor: none;
+  pointer-events: none;
+
+  /* opacity: 0.7; */
+  background-color: #fff;
+}
+#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth abbr {
+  color: #ccc !important;
+
+  /* 방법2 */
+  /* display: none; */
+}
+
 /* ---------------- 회원가입 완료 페이지 ---------------- */
 #root .successWrap {
   display: flex;
