@@ -6,6 +6,7 @@ import JoinForm from "./pages/joinForm";
 import JoinSuccess from "./pages/joinSuccess";
 import LoginForm from "./pages/loginForm";
 import InquiryForm from "./pages/inquiryForm";
+// import DetailModal from "./pages/detailModal";
 
 import { AuthProvider } from "./assets/context/AuthContext";
 
