@@ -293,22 +293,108 @@ header .logo svg {
 /* 글 작성 버튼 */
 #root .indexContainer .writeBtn {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
+  bottom: 44px;
+  right: 32px;
   aspect-ratio: 1 / 1;
   background-color: #D9D9D9;
   border-radius: 50%;
-  width: 60px;
+  width: 55px;
   padding: 15px;
   z-index: 100;
   cursor: pointer;
 }
 
 /* ---------------- 일기 상세 페이지(모달) ---------------- */
-.detailModalContainer{
-  
+/* 오버레이 제외 전체 */
+.detailModalContainer .modalContainer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 60;
 }
+.detailModalContainer .modalContainer .modalCloseBtn{
+  display: flex;
+  align-items: center;
+  margin: 0 0 8px 32px;
+}
+.detailModalContainer .modalContainer .modalCloseBtn svg{
+  stroke: #fff;
+  width: 25px;
+}
+.detailModalContainer .modalContainer .modalCloseBtn span{
+  color: #fff;
+  font-size: 16px;
+  margin-left: 5px;
+}
+.detailModalContainer .modalContainer .modalBody{
+  width: 100%;
+  height: 630px;
+  background-color: #fff;
+  border-radius: 30px 30px 0 0 ;
+  border: 1px solid #EBEBEB;
+  padding: 44px 32px;
+}
+/* 날짜표시 & 전날/다음날 이동 화살표 */
+.detailModalContainer .modalContainer .modalBody .modalHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.detailModalContainer .modalContainer .modalBody .modalHeader button svg{
+  width: 28px;
+  stroke: #1340a2;
+  stroke-width: 2px;
+}
+/* 일기 내용 */
 
+/* 오버레이 */
+.detailModalContainer .modalOverlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000a4;
+  z-index: 50;
+}
+/* 영상 */
+.detailModalContainer .modalContainer .modalBody .youtubeArea, 
+.detailModalContainer .modalContainer .modalBody .youtubeArea .emptyVideoArea{
+  margin-bottom: 15px;
+}
+.detailModalContainer .modalContainer .modalBody .youtubeArea iframe{
+  /* width: 100%;
+  height: 100%; */
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+}
+/* 영상 없을 때 */
+.detailModalContainer .modalContainer .modalBody .youtubeArea .emptyVideoArea{
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  border-radius: 10px;
+}
+.detailModalContainer .modalContainer .modalBody .youtubeArea .emptyVideoArea p{
+  color: #D9D9D9;
+  font-weight: normal;
+}
+/* 텍스트(일기) */
+.detailModalContainer .modalContainer .modalBody .diaryContent textarea{
+  resize: none;
+  width: 100%;
+  min-height: 150px;
+  background-color: #fff;
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  padding: 15px;
+  white-space: pre-wrap;
+  outline: none;
+}
 
 /* ---------------- 회원가입 완료 페이지 ---------------- */
 #root .successWrap {
