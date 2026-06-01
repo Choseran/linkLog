@@ -138,7 +138,14 @@ export default function Header() {
                 <p className={"mypageName"}>{userName}</p>
                 <p className={"mypageId"}>@{userId}</p>
               </div>
-              <Link to="/" className={"infoEditBtn btn"}>
+              <Link
+                to="/login"
+                className={"infoEditBtn btn"}
+                onClick={() => {
+                  alert("로그아웃 되었습니다.");
+                  setMypage(false);
+                }}
+              >
                 로그아웃
               </Link>
             </div>

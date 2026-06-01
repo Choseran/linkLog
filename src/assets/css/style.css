@@ -180,7 +180,11 @@ header .logo svg {
 }
 
 /* 월~일 요일 표시 줄 */
-#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__weekdays {
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__weekdays {
   display: flex !important;
   text-align: center;
   text-decoration: none;
@@ -188,17 +192,26 @@ header .logo svg {
   font-size: 18px;
   padding-bottom: 10px;
 }
-#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__weekdays__weekday abbr {
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__weekdays__weekday
+  abbr {
   text-decoration: none;
 }
 
 /* 월 전체 - 날짜 타일들이 모여 있는 grid 영역 */
-#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days {
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__days {
   display: grid !important;
   grid-template-columns: repeat(7, 1fr);
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
   gap: 1px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
 }
 
 /* 일 - 각 날짜 버튼 */
@@ -221,14 +234,24 @@ header .logo svg {
 }
 
 /* 오늘 날짜 */
-#root .indexContainer .calendarBody .react-calendar .react-calendar__tile--now abbr{
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__tile--now
+  abbr {
   /* color: #1340a2 !important; */
   z-index: 2;
   /* color: #fff; */
   font-weight: bold;
   position: relative;
 }
-#root .indexContainer .calendarBody .react-calendar .react-calendar__tile--now abbr::before{
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__tile--now
+  abbr::before {
   /* content: ''; */
   /* 별 */
   /* background-image: url(../img/star.svg);
@@ -251,7 +274,7 @@ header .logo svg {
   display: block;
   z-index: -1; */
 }
-.react-calendar__tile--now{
+.react-calendar__tile--now {
   /* border: 1px solid #1340a2; */
   /* box-shadow: 0 0 5px #5f8ff6; */
   box-shadow: 0 0 0 1px #1340a2;
@@ -266,13 +289,22 @@ header .logo svg {
 } */
 
 /* 현재 월이 아닌 이전달/다음달 날짜 흰색으로 채우고 숨김 */
-#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth {
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__days__day--neighboringMonth {
   cursor: default;
   pointer-events: none;
   background-color: #fff !important; /* 부모 grid 배경인 회색이 비치지 않게 흰색으로 덮음 */
 }
 /* 이전/다음 달 날짜 */
-#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth abbr {
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__days__day--neighboringMonth
+  abbr {
   display: none;
   /* color: #dadada; */
 }
@@ -296,7 +328,7 @@ header .logo svg {
   bottom: 44px;
   right: 32px;
   aspect-ratio: 1 / 1;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   border-radius: 50%;
   width: 55px;
   padding: 15px;
@@ -306,43 +338,43 @@ header .logo svg {
 
 /* ---------------- 일기 상세 페이지(모달) ---------------- */
 /* 오버레이 제외 전체 */
-.detailModalContainer .modalContainer{
+.detailModalContainer .modalContainer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   z-index: 60;
 }
-.detailModalContainer .modalContainer .modalCloseBtn{
+.detailModalContainer .modalContainer .modalCloseBtn {
   display: flex;
   align-items: center;
   margin: 0 0 8px 32px;
 }
-.detailModalContainer .modalContainer .modalCloseBtn svg{
+.detailModalContainer .modalContainer .modalCloseBtn svg {
   stroke: #fff;
   width: 25px;
 }
-.detailModalContainer .modalContainer .modalCloseBtn span{
+.detailModalContainer .modalContainer .modalCloseBtn span {
   color: #fff;
   font-size: 16px;
   margin-left: 5px;
 }
-.detailModalContainer .modalContainer .modalBody{
+.detailModalContainer .modalContainer .modalBody {
   width: 100%;
   height: 630px;
   background-color: #fff;
-  border-radius: 30px 30px 0 0 ;
-  border: 1px solid #EBEBEB;
+  border-radius: 30px 30px 0 0;
+  border: 1px solid #ebebeb;
   padding: 44px 32px;
 }
 /* 날짜표시 & 전날/다음날 이동 화살표 */
-.detailModalContainer .modalContainer .modalBody .modalHeader{
+.detailModalContainer .modalContainer .modalBody .modalHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
 }
-.detailModalContainer .modalContainer .modalBody .modalHeader button svg{
+.detailModalContainer .modalContainer .modalBody .modalHeader button svg {
   width: 28px;
   stroke: #1340a2;
   stroke-width: 2px;
@@ -350,7 +382,7 @@ header .logo svg {
 /* 일기 내용 */
 
 /* 오버레이 */
-.detailModalContainer .modalOverlay{
+.detailModalContainer .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -360,18 +392,18 @@ header .logo svg {
   z-index: 50;
 }
 /* 영상 */
-.detailModalContainer .modalContainer .modalBody .youtubeArea, 
-.detailModalContainer .modalContainer .modalBody .youtubeArea .emptyVideoArea{
+.detailModalContainer .modalContainer .modalBody .youtubeArea,
+.detailModalContainer .modalContainer .modalBody .youtubeArea .emptyVideoArea {
   margin-bottom: 15px;
 }
-.detailModalContainer .modalContainer .modalBody .youtubeArea iframe{
+.detailModalContainer .modalContainer .modalBody .youtubeArea iframe {
   /* width: 100%;
   height: 100%; */
   aspect-ratio: 16/9;
   border-radius: 10px;
 }
 /* 영상 없을 때 */
-.detailModalContainer .modalContainer .modalBody .youtubeArea .emptyVideoArea{
+.detailModalContainer .modalContainer .modalBody .youtubeArea .emptyVideoArea {
   aspect-ratio: 16/9;
   display: flex;
   align-items: center;
@@ -379,12 +411,18 @@ header .logo svg {
   background-color: #000;
   border-radius: 10px;
 }
-.detailModalContainer .modalContainer .modalBody .youtubeArea .emptyVideoArea p{
-  color: #D9D9D9;
+.detailModalContainer
+  .modalContainer
+  .modalBody
+  .youtubeArea
+  .emptyVideoArea
+  p {
+  color: #d9d9d9;
   font-weight: normal;
 }
 /* 텍스트(일기) */
-.detailModalContainer .modalContainer .modalBody .diaryContent textarea{
+.detailModalContainer .modalContainer .modalBody .diaryContent textarea,
+#root .writeWrap .writeContent textarea {
   resize: none;
   width: 100%;
   min-height: 150px;
@@ -394,6 +432,27 @@ header .logo svg {
   padding: 15px;
   white-space: pre-wrap;
   outline: none;
+}
+
+/* ---------------- 글쓰기 페이지 ---------------- */
+#root .writeWrap {
+  padding: 15px 17px;
+}
+#root .writeWrap .writeContent {
+  margin-bottom: 19px;
+}
+#root .writeWrap .writeContent h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+#root .writeWrap .writeContent p {
+  text-align: right;
+}
+#root .writeWrap .writeContent p,
+#root .writeWrap .writeContent p em {
+  color: #707070;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 /* ---------------- 회원가입 완료 페이지 ---------------- */
@@ -789,7 +848,9 @@ header .logo svg {
 /* 입력박스 공통 */
 #root .inquiryFormContainer form table tbody tr td input[type="text"],
 #root .inquiryFormContainer form table tbody tr td select,
-#root .inquiryFormContainer form table tbody tr td textarea {
+#root .inquiryFormContainer form table tbody tr td textarea,
+#root .writeWrap .writeContent input,
+#root .writeWrap .writeContent textarea {
   width: 100%;
   border: 1px solid #aeaeae;
   border-radius: 5px;
@@ -921,7 +982,7 @@ header .logo svg {
 }
 
 /* ---------------- 데스크탑 css ---------------- */
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 1080px) {
   #root .contentWrap {
     width: 765px;
     /* width: 60%; */

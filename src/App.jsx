@@ -6,6 +6,7 @@ import JoinForm from "./pages/joinForm";
 import JoinSuccess from "./pages/joinSuccess";
 import LoginForm from "./pages/loginForm";
 import InquiryForm from "./pages/inquiryForm";
+import ContentWrite from "./pages/contentWrite";
 // import DetailModal from "./pages/detailModal";
 
 import { AuthProvider } from "./assets/context/AuthContext";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/success" element={<JoinSuccess />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/inquiry" element={<InquiryForm />} />
+          <Route path="/write" element={<ContentWrite />} />
         </Routes>
         <Footer />
       </BrowserRouter>
