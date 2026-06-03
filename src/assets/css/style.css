@@ -61,11 +61,11 @@ header .logo svg {
   width: 100%;
   min-height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 2;
+  z-index: 100;  /* 0602 - 령경추가 */
   transition-delay: 0.3s;
   opacity: 0;
   visibility: hidden;
-  transition: transform 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out 0.3s;
 }
 #root .mypageWrap.mypageModalBackOpen {
   opacity: 1;
@@ -84,7 +84,7 @@ header .logo svg {
 
   transition-delay: 0.3s;
   transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out 0.3s;
 }
 #root .mypageWrap .mypageModal.mypageModalOpen {
   transform: translateX(0);
@@ -177,6 +177,7 @@ header .logo svg {
 }
 #root .indexContainer .calendarHeader .currentMonth {
   font-size: 20px;
+  letter-spacing: 2px;
 }
 
 /* 월~일 요일 표시 줄 */
@@ -277,8 +278,9 @@ header .logo svg {
 .react-calendar__tile--now {
   /* border: 1px solid #1340a2; */
   /* box-shadow: 0 0 5px #5f8ff6; */
-  box-shadow: 0 0 0 1px #1340a2;
-  /* z-index: 3; */
+  /* box-shadow: 0 0 0 1px #1340a2; */
+  box-shadow: 0 0 0 1.5px #1340a2;
+  z-index: 3;
 }
 
 /* 라이브러리 기본 Hover / Focus 스타일 완전 초기화 */
@@ -296,7 +298,9 @@ header .logo svg {
   .react-calendar__month-view__days__day--neighboringMonth {
   cursor: default;
   pointer-events: none;
-  background-color: #fff !important; /* 부모 grid 배경인 회색이 비치지 않게 흰색으로 덮음 */
+  /* 부모 grid 배경인 회색이 비치지 않게 흰색으로 덮음 */
+  background-color: #fff !important;
+  /* background-image: linear-gradient(to top, #ffffff, #ffffff85) !important; */
 }
 /* 이전/다음 달 날짜 */
 #root
@@ -319,9 +323,45 @@ header .logo svg {
   background-size: cover;
   background-position: center;
   z-index: 1; /* 타일 자체 배경보다 위, 그러나 글자(abbr)보다는 아래에 위치 */
-  opacity: 50%;
+  /* opacity: 50%; */
+}
+/* 썸네일 이미지 위에 그라데이션 */
+#root .indexContainer .calendarBody .react-calendar .tileBgImage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, #ffffff 0%, #ffffff85 70%, transparent 100%) !important;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 2;
 }
 
+/* ---------------- 일기 상세 페이지(모달) ---------------- */
+/* 일기 상세 전체 */
+#root .detailModalContainer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out, background-color 0.4s ease-out, visibility 0.4s ease-out;
+  z-index: 100;
+
+  opacity: 0;
+  visibility: hidden;
+  /* transition: opacity 0.3s ease-in-out; */
+}
+#root .detailModalContainer.open{
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  visibility: visible;
+}
 /* 글 작성 버튼 */
 #root .indexContainer .writeBtn {
   position: fixed;
@@ -332,65 +372,83 @@ header .logo svg {
   border-radius: 50%;
   width: 55px;
   padding: 15px;
-  z-index: 100;
+  z-index: 55;
   cursor: pointer;
+  outline: none;
+}
+#root .indexContainer .writeBtn:hover{
+  background-color: #c3c3c3;
 }
 
-/* ---------------- 일기 상세 페이지(모달) ---------------- */
 /* 오버레이 제외 전체 */
 .detailModalContainer .modalContainer {
-  position: fixed;
+  /* width: 100%; */
+  position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  /* left: 0; */
   z-index: 60;
+
+  width: 100%;
+  max-width: 500px;
+  height: 630px;
+  background-color: #fff;
+  border-radius: 30px 30px 0 0;
+  border: 1px solid #ebebeb;
+  padding: 44px 32px;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.4s ease-out;
 }
+.detailModalContainer.open .modalContainer {
+  transform: translateY(0);
+}
+/* 닫기버튼 */
 .detailModalContainer .modalContainer .modalCloseBtn {
-  display: flex;
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  /* display: flex;
   align-items: center;
-  margin: 0 0 8px 32px;
+  margin: 0 0 8px 32px; */
+  cursor: pointer;
 }
 .detailModalContainer .modalContainer .modalCloseBtn svg {
-  stroke: #fff;
+  stroke: #000;
   width: 25px;
 }
 .detailModalContainer .modalContainer .modalCloseBtn span {
-  color: #fff;
+  color: #000;
   font-size: 16px;
   margin-left: 5px;
 }
-.detailModalContainer .modalContainer .modalBody {
+/* .detailModalContainer .modalContainer .modalBody {
   width: 100%;
   height: 630px;
   background-color: #fff;
   border-radius: 30px 30px 0 0;
   border: 1px solid #ebebeb;
   padding: 44px 32px;
-}
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+} */
 /* 날짜표시 & 전날/다음날 이동 화살표 */
 .detailModalContainer .modalContainer .modalBody .modalHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 40px;
+
+  margin-top: 32px;
 }
 .detailModalContainer .modalContainer .modalBody .modalHeader button svg {
   width: 28px;
   stroke: #1340a2;
   stroke-width: 2px;
 }
-/* 일기 내용 */
-
-/* 오버레이 */
-.detailModalContainer .modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000000a4;
-  z-index: 50;
+.detailModalContainer .modalContainer .modalBody .modalHeader .currentDate{
+  font-size: 17px;
+  letter-spacing: 0.3px;
 }
+/* 일기 내용 */
 /* 영상 */
 .detailModalContainer .modalContainer .modalBody .youtubeArea,
 .detailModalContainer .modalContainer .modalBody .youtubeArea .emptyVideoArea {
@@ -399,6 +457,7 @@ header .logo svg {
 .detailModalContainer .modalContainer .modalBody .youtubeArea iframe {
   /* width: 100%;
   height: 100%; */
+  width: 100%;
   aspect-ratio: 16/9;
   border-radius: 10px;
 }
@@ -432,7 +491,19 @@ header .logo svg {
   padding: 15px;
   white-space: pre-wrap;
   outline: none;
+  font-size: 15px;
 }
+
+/* 오버레이 */
+/* .detailModalContainer .modalOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 50;
+} */
 
 /* ---------------- 글쓰기 페이지 ---------------- */
 #root .writeWrap {
@@ -767,7 +838,6 @@ header .logo svg {
   font-size: 15px;
   border-top: 1px solid #e1e1e1;
   white-space: pre-wrap;
-  transition: 0.3s;
   opacity: 0;
   overflow: hidden;
   max-height: 0;

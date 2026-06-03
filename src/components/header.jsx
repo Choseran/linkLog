@@ -1,9 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/style.css";
 
 import { AuthContext } from "../assets/context/AuthContext";
 
-import { Link } from "react-router-dom";
 
 export default function Header() {
   const [mypage, setMypage] = useState(false);
@@ -136,6 +136,7 @@ export default function Header() {
             <div className={"mypageModalTop"}>
               <div className={"mypageInfo"}>
                 <p className={"mypageName"}>{userName}</p>
+                {/* 0603 령경추가 - 여기 user 들어가야하지않나요? */}
                 <p className={"mypageId"}>@{userId}</p>
               </div>
               <Link

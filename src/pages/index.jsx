@@ -1,10 +1,10 @@
 import { useContext, useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import '../assets/css/style.css';
 import '../assets/css/reset.css';
 
 import DetailModal from './detailModal';
+import { getYoutubeThumbnail } from '../utils/youtube';
 
 export default function Index(){
     // 날짜
@@ -95,6 +95,18 @@ export default function Index(){
         }
     }, [])
 
+    // selectDay(선택된 날짜)가 바뀔 때마다 일기 데이터 자동 동기화
+    useEffect(() => {
+        if (selectDay) {
+            const dateStr = dataFormat(selectDay);
+            if (diaries[dateStr]) {
+                setSelectDayContents(diaries[dateStr]);
+            } else {
+                setSelectDayContents(null); // 일기 없는 날은 null 처리
+            }
+        }
+    }, [selectDay, diaries]);
+
     const dataFormat = (date) => {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -137,62 +149,47 @@ export default function Index(){
         setIsModalOpen(true);
     }
 
-    // 일기 추가 및 수정 핸들러
-    const saveDiaryHandle = (dateStr, url, content) => {
-        const imgUrl = '';
-        const regID = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        const match = url.match(regID);
-        if(match && match[2].length == 11) {
-            imgUrl = `https://img.youtube.com/vi/${match[2]}/mqdefault.jpg`;
-        }
-
-        const updateDiary = {
-            ...diaries, 
-            [dateStr]: {
-                content: content, 
-                youtubeUrl: url, 
-                thumbnail: imgUrl,
-            }
-        }
-
-        // 업데이트
-        setDiaries(updateDiary);
-        localStorage.setItem('linklog_diaries', JSON.stringify(updateDiary));
-        // 갱신 -> 즉시반영
-        setSelectDayContents(updateDiary[dateStr]);
+    // 하루 전날로 이동하는 핸들러
+    const prevDayHandler = () => {
+        if (!selectDay) return;
+        const prev = new Date(selectDay);
+        prev.setDate(prev.getDate() - 1);
+        
+        setSelectDay(prev);
+        setActiveDate(prev); // 메인 달력 월 이동 연동
     }
-    
-    // 썸네일 추출, 배열에 추가
-    const getYoutubeThumbnail = (url) => {
-        if(!url) return '';
 
-        // ID 추출
-        const regID = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        const match = url.match(regID);
-
-        if(match && match[2].length == 11){
-            const videoID = match[2];
-
-            // ID 조합해서 중화질 썸네일 반환함
-            // maxresdefault <- 이건 고화질
-            // 고화질 안 쓴 이유 : 옛날 영상이면 없을수도 있기때문
-            return `https://www.youtube.com/embed/${videoID}?autoplay=0&rel=0`;
-        }
-        // 올바르지 않은 링크일 경우 빈값으로 반환
-        return '';
+    // 하루 다음날로 이동하는 핸들러
+    const nextDayHandler = () => {
+        if (!selectDay) return;
+        const next = new Date(selectDay);
+        next.setDate(next.getDate() + 1);
+        
+        setSelectDay(next);
+        setActiveDate(next); // 메인 달력 월 이동 연동
     }
     
     return(
         <div className='indexContainer'>
             {/* 월 / 월 이동 화살표 */}
             <div className='calendarHeader'>
-                <button type='button' className='prevMonthBtn' onClick={prevMonthHandler}>
+                <button type='button' className='prevMonthBtn' 
+                onClick={() => {
+                    const prevMonth = new Date(activeDate);
+                    prevMonth.setMonth(prevMonth.getMonth() - 1);
+                    setActiveDate(prevMonth);
+                }}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                         <path strokeLinecap="miter" strokeLinejoin="miter" d="M15.75 19.5 8.25 12l7.5-7.5" />
                     </svg>
                 </button>
-                <p className='currentMonth'>{currDate.getMonth() + 1}월</p>
-                <button type='button' className='nextMonthBtn' onClick={nextMonthHandler}>
+                <p className="currentMonth">{activeDate.getMonth() + 1}월</p>
+                <button type='button' className='nextMonthBtn' 
+                onClick={() => {
+                    const nextMonth = new Date(activeDate);
+                    nextMonth.setMonth(nextMonth.getMonth() + 1);
+                    setActiveDate(nextMonth);
+                }}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg>
@@ -210,6 +207,10 @@ export default function Index(){
                     formatDay={(locale, date) => date.getDate().toString()}
                     // 월 이동 안보이게
                     showNavigation={false} 
+                    onClickDay={(date) => {
+                        setSelectDay(date);
+                        setIsModalOpen(true);
+                    }} 
                     // 특정 날짜 표시
                     // tileContent = {({ date, view }) => view === 'month' && date.getDate() === 15 ? <p>★</p> : null}
                     // 예시: 일기가 있는 날짜 타일에 'has-diary' 클래스 부여
@@ -239,7 +240,7 @@ export default function Index(){
                         return null;
                     }}
                     activeStartDate={activeDate}
-                    onActiveStartDateChange={({ activeDate }) => setActiveDate(activeDate)}
+                    onActiveStartDateChange={({ activeStartDate }) => setActiveDate(activeStartDate)}
                 />
             </div>
             <DetailModal 
@@ -247,8 +248,8 @@ export default function Index(){
                 isModalClose = {() => setIsModalOpen(false)} 
                 selectDay = {selectDay ? dataFormat(selectDay) : ''} 
                 selectDayContents = {selectDayContents} 
-                getYoutubeThumbnail = {getYoutubeThumbnail} 
-                saveDiaryHandle = {saveDiaryHandle}
+                prevDayHandler = {prevDayHandler}
+                nextDayHandler = {nextDayHandler}
             />
         </div>
     )

@@ -7,7 +7,6 @@ import JoinSuccess from "./pages/joinSuccess";
 import LoginForm from "./pages/loginForm";
 import InquiryForm from "./pages/inquiryForm";
 import ContentWrite from "./pages/contentWrite";
-// import DetailModal from "./pages/detailModal";
 
 import { AuthProvider } from "./assets/context/AuthContext";
 

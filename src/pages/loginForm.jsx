@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import { AuthContext } from "../assets/context/AuthContext";  // 0603 령경추가
+
 export default function LoginForm() {
   const navigate = useNavigate();
+
+  // const { login } = useContext(AuthContext);  // 0603 령경추가
+
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [idError, setIdError] = useState(null);
@@ -25,6 +30,9 @@ export default function LoginForm() {
         navigate("/");
       }
     }
+
+    // 0603 령경추가 - 9번째 줄에 추가한걸로 로컬에 저장된 유저 리스트 가져오기 이런거 써야할듯...
+    // const findUsers = JSON.parse(localStorage.getItem("users") || "[]");
   };
   return (
     <form className="loginWrap contentWrap">
