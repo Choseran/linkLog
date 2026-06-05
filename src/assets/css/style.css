@@ -291,26 +291,22 @@ header .logo svg {
 } */
 
 /* 현재 월이 아닌 이전달/다음달 날짜 흰색으로 채우고 숨김 */
-#root
-  .indexContainer
-  .calendarBody
-  .react-calendar
-  .react-calendar__month-view__days__day--neighboringMonth {
+#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth {
   cursor: default;
   pointer-events: none;
   /* 부모 grid 배경인 회색이 비치지 않게 흰색으로 덮음 */
   background-color: #fff !important;
-  /* background-image: linear-gradient(to top, #ffffff, #ffffff85) !important; */
+  /* background-image: none !important; */
 }
-/* 이전/다음 달 날짜 */
-#root
-  .indexContainer
-  .calendarBody
-  .react-calendar
-  .react-calendar__month-view__days__day--neighboringMonth
-  abbr {
+/* 이전/다음 달 날짜 숨기기 */
+#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth abbr {
   display: none;
   /* color: #dadada; */
+}
+/* 썸네일 숨기기 */
+#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth .tileBgImage,
+#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth .react-calendar__tile__content {
+  display: none !important;
 }
 
 /* 동적 주입되는 썸네일 이미지 틀 세팅 */
