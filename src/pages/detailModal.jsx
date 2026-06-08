@@ -50,8 +50,12 @@ export default function DetailModal({ isModalOpen, isModalClose, selectDay, sele
                         }
                     </div>
                     {/* 일기 내용 */}
-                    <div className='diaryContent'>
-                        <textarea disabled value={selectDayContents?.content || '작성된 일기가 없습니다.'}></textarea>
+                    <div className={`diaryContent ${selectDayContents?.content == null ? 'emptyDiaryContent' : ''}`}>
+                        {selectDayContents?.content != null ? 
+                            <textarea disabled value={selectDayContents?.content}></textarea>
+                            :
+                            <p>작성된 일기가 없습니다.</p>
+                        }
                     </div>
                 </div>
             </div>

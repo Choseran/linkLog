@@ -223,7 +223,7 @@ header .logo svg {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  padding: 8px;
+  padding: 9px 12px;
   overflow: hidden;
 }
 
@@ -255,7 +255,8 @@ header .logo svg {
   abbr::before {
   content: '';
   /* 별 */
-  background-image: url(../img/star.svg);
+  /* background-image: url(../img/star.svg); */
+  background-image: url(../img/star-svgrepo-com.svg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -269,9 +270,9 @@ header .logo svg {
   color: #062b7a; */
   
   position: absolute;
-  bottom: 50%;
+  bottom: 45%;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 45%);
   display: block;
   z-index: -1;
 }
@@ -487,6 +488,19 @@ header .logo svg {
   white-space: pre-wrap;
   outline: none;
   font-size: 15px;
+}
+/* 일기 없을 때 */
+.detailModalContainer .modalContainer .modalBody .emptyDiaryContent{
+  /* padding-top: 60px; */
+  /* text-align: center; */
+  min-height: 150px;
+  background-color: #fff;
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ---------------- 글쓰기 페이지 ---------------- */
