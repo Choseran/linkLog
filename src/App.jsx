@@ -13,7 +13,7 @@ import { AuthProvider } from "./assets/context/AuthContext";
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Header />
         <Routes>
           <Route path="/" element={<Index />} />
