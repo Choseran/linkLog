@@ -260,8 +260,8 @@ header .logo svg {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   /* 동그라미 */
   /* background-color: #3365cf;
   border-radius: 50%;
@@ -270,9 +270,9 @@ header .logo svg {
   color: #062b7a; */
   
   position: absolute;
-  bottom: 45%;
+  bottom: 38%;
   left: 50%;
-  transform: translate(-50%, 45%);
+  transform: translate(-50%, 38%);
   display: block;
   z-index: -1;
 }
