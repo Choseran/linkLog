@@ -65,7 +65,10 @@ header .logo svg {
   transition-delay: 0.3s;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out, visibility 0.3s linear;
+  transition:
+    opacity 0.3s ease-in-out,
+    background-color 0.3s ease-in-out,
+    visibility 0.3s linear;
 }
 #root .mypageWrap.mypageModalBackOpen {
   opacity: 1;
@@ -253,7 +256,7 @@ header .logo svg {
   .react-calendar
   .react-calendar__tile--now
   abbr::before {
-  content: '';
+  content: "";
   /* 별 */
   /* background-image: url(../img/star.svg); */
   background-image: url(../img/star-svgrepo-com.svg);
@@ -268,7 +271,7 @@ header .logo svg {
   width: 25px;
   height: 25px;
   color: #062b7a; */
-  
+
   position: absolute;
   bottom: 38%;
   left: 50%;
@@ -292,7 +295,11 @@ header .logo svg {
 } */
 
 /* 현재 월이 아닌 이전달/다음달 날짜 흰색으로 채우고 숨김 */
-#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth {
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__days__day--neighboringMonth {
   cursor: default;
   pointer-events: none;
   /* 부모 grid 배경인 회색이 비치지 않게 흰색으로 덮음 */
@@ -300,13 +307,28 @@ header .logo svg {
   /* background-image: none !important; */
 }
 /* 이전/다음 달 날짜 숨기기 */
-#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth abbr {
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__days__day--neighboringMonth
+  abbr {
   display: none;
   /* color: #dadada; */
 }
 /* 썸네일 숨기기 */
-#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth .tileBgImage,
-#root .indexContainer .calendarBody .react-calendar .react-calendar__month-view__days__day--neighboringMonth .react-calendar__tile__content {
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__days__day--neighboringMonth
+  .tileBgImage,
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__days__day--neighboringMonth
+  .react-calendar__tile__content {
   display: none !important;
 }
 
@@ -324,37 +346,46 @@ header .logo svg {
 }
 /* 썸네일 이미지 위에 그라데이션 */
 #root .indexContainer .calendarBody .react-calendar .tileBgImage::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to top, #ffffff 0%, #ffffff85 70%, transparent 100%) !important;
+  background-image: linear-gradient(
+    to top,
+    #ffffff 0%,
+    #ffffff85 70%,
+    transparent 100%
+  ) !important;
   background: rgba(255, 255, 255, 0.2);
   z-index: 2;
 }
 
 /* ---------------- 일기 상세 페이지(모달) ---------------- */
 /* 일기 상세 전체 */
-#root .detailModalContainer{
+#root .detailModalContainer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  transition: transform 0.4s ease-out, opacity 0.4s ease-out, background-color 0.4s ease-out, visibility 0.4s ease-out;
+  transition:
+    transform 0.4s ease-out,
+    opacity 0.4s ease-out,
+    background-color 0.4s ease-out,
+    visibility 0.4s ease-out;
   z-index: 100;
 
   opacity: 0;
   visibility: hidden;
   /* transition: opacity 0.3s ease-in-out; */
 }
-#root .detailModalContainer.open{
+#root .detailModalContainer.open {
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 1;
   visibility: visible;
@@ -373,7 +404,7 @@ header .logo svg {
   cursor: pointer;
   outline: none;
 }
-#root .indexContainer .writeBtn:hover{
+#root .indexContainer .writeBtn:hover {
   background-color: #c3c3c3;
 }
 
@@ -440,7 +471,7 @@ header .logo svg {
   stroke: #1340a2;
   stroke-width: 2px;
 }
-.detailModalContainer .modalContainer .modalBody .modalHeader .currentDate{
+.detailModalContainer .modalContainer .modalBody .modalHeader .currentDate {
   font-size: 17px;
   letter-spacing: 0.3px;
 }
@@ -490,7 +521,7 @@ header .logo svg {
   font-size: 15px;
 }
 /* 일기 없을 때 */
-.detailModalContainer .modalContainer .modalBody .emptyDiaryContent{
+.detailModalContainer .modalContainer .modalBody .emptyDiaryContent {
   /* padding-top: 60px; */
   /* text-align: center; */
   min-height: 150px;
@@ -522,6 +553,11 @@ header .logo svg {
   color: #707070;
   font-size: 15px;
   font-weight: 500;
+}
+
+#root .writeWrap .btn {
+  display: block;
+  margin: 45px auto 0;
 }
 
 /* ---------------- 회원가입 완료 페이지 ---------------- */
