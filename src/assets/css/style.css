@@ -27,6 +27,10 @@
   border-bottom: 1px solid #aeaeae;
   font-size: 16px;
 }
+/* 문의하기, 작성페이지 input 에러 공통 */
+#root .inputError {
+  border: 1px solid #d31616 !important;
+}
 
 /* ---------------- 헤더 css ---------------- */
 #root header {
@@ -37,7 +41,7 @@
 }
 header a {
   display: inline-block;
-  width: 201px;
+  width: 150px;
 }
 header button {
   position: absolute;
@@ -76,7 +80,7 @@ header .logo svg {
 }
 #root .mypageWrap .mypageModal {
   /* display: block; */
-  width: 90%; /* 1025px 이상 60% */
+  width: 90%;
   min-height: 100%;
   border-radius: 30px 0 0 30px;
   position: absolute;
@@ -166,20 +170,19 @@ header .logo svg {
 
 /* 월 / 월 이동 화살표 */
 #root .indexContainer .calendarHeader {
-  width: 100%;
+  width: 120px;
   display: flex;
-  align-content: center;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
+  padding: 15px 0;
 }
 #root .indexContainer .calendarHeader > button svg {
-  width: 28px;
+  width: 22px;
   stroke: #1340a2;
   stroke-width: 2px;
 }
 #root .indexContainer .calendarHeader .currentMonth {
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 2px;
 }
 
@@ -194,7 +197,24 @@ header .logo svg {
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
-  padding-bottom: 10px;
+  border: 1px solid #e0e0e0;
+  border-bottom: 0;
+}
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__weekdays__weekday {
+  padding: 5px 0;
+  border-right: 1px solid #e0e0e0;
+  background: #fff;
+}
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__weekdays__weekday:last-child {
+  border-right: 0;
 }
 #root
   .indexContainer
@@ -203,6 +223,14 @@ header .logo svg {
   .react-calendar__month-view__weekdays__weekday
   abbr {
   text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+#root
+  .indexContainer
+  .calendarBody
+  .react-calendar
+  .react-calendar__month-view__weekdays {
 }
 
 /* 월 전체 - 날짜 타일들이 모여 있는 grid 영역 */
@@ -410,14 +438,12 @@ header .logo svg {
 
 /* 오버레이 제외 전체 */
 .detailModalContainer .modalContainer {
-  /* width: 100%; */
   position: absolute;
   bottom: 0;
   /* left: 0; */
   z-index: 60;
 
   width: 100%;
-  max-width: 500px;
   height: 630px;
   background-color: #fff;
   border-radius: 30px 30px 0 0;
@@ -1086,9 +1112,18 @@ header .logo svg {
 }
 
 /* ---------------- 데스크탑 css ---------------- */
-@media screen and (min-width: 1080px) {
-  #root .contentWrap {
+@media screen and (min-width: 1025px) {
+  #root .contentWrap,
+  #root .indexContainer {
     width: 765px;
+    margin: 0 auto;
     /* width: 60%; */
+  }
+  #root .mypageWrap .mypageModal {
+    width: 60%;
+    max-width: 606px;
+  }
+  .detailModalContainer .modalContainer {
+    width: 765px;
   }
 }

@@ -73,13 +73,15 @@ export default function ContentWrite() {
   return (
     <form className="writeWrap" onSubmit={handleSubmit}>
       <div className="writeContent">
-        <h4>Link</h4>
+        <h4>
+          <span className="requiredMark">*</span> Link
+        </h4>
         <input
           type="text"
           placeholder="유튜브 링크를 첨부해주세요."
           value={youtubeUrl}
           onChange={(e) => setYoutubeUrl(e.target.value)}
-          className={linkError ? "error" : ""}
+          className={linkError ? "inputError" : ""}
         />
       </div>
       <div className="writeContent">
