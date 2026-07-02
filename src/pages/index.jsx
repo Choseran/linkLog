@@ -5,6 +5,7 @@ import '../assets/css/reset.css';
 
 import DetailModal from './detailModal';
 import { getYoutubeThumbnail } from '../utils/youtube';
+import { initialDiaries } from '../assets/data/initialDiaries';
 
 export default function Index(){
     // 날짜
@@ -30,66 +31,10 @@ export default function Index(){
         const data = localStorage.getItem('linklog_diaries');
 
         if(!data){
-            const dummy = {
-                '2026.06.01' : {
-                    'content' : `와 진짜 레전드 사건 \n내가대체이걸어떻게해낸거냐 \n열심히검색한나자신정말고생했다!!`,
-                    'youtubeUrl' : 'https://youtu.be/wA1LKdGwFgc?si=XWKFjIp8KFGCoGJa', 
-                    'thumbnail' : 'https://img.youtube.com/vi/wA1LKdGwFgc/mqdefault.jpg',
-                },
-                '2026.06.02' : {
-                    'content' : '더미 일기0',
-                    'youtubeUrl' : 'https://youtu.be/N4FN1Fb-4i8?si=LnnJ7xTDQ6sLphZ7', 
-                    'thumbnail' : 'https://img.youtube.com/vi/N4FN1Fb-4i8/mqdefault.jpg',
-                },
-                '2026.06.10' : {
-                    'content' : '더미 일기1',
-                    'youtubeUrl' : 'https://youtu.be/ItSKahBISg0?si=LSYRc95a5NuGBZVx', 
-                    'thumbnail' : 'https://img.youtube.com/vi/ItSKahBISg0/mqdefault.jpg',
-                },
-                '2026.06.11' : {
-                    'content' : '더미 일기2',
-                    'youtubeUrl' : 'https://youtu.be/6zwJqum91vs?si=e9fCuHxP8FkQbnzQ', 
-                    'thumbnail' : 'https://img.youtube.com/vi/6zwJqum91vs/mqdefault.jpg',
-                },
-                '2026.06.13' : {
-                    'content' : '더미 일기더미 일기더미 일기더미 일기',
-                    'youtubeUrl' : 'https://youtu.be/wrHH2QjA4yM?si=IiGaIDI64_PZzt4O', 
-                    'thumbnail' : 'https://img.youtube.com/vi/wrHH2QjA4yM/mqdefault.jpg',
-                },
-                '2026.06.15' : {
-                    'content' : '더미 일기3',
-                    'youtubeUrl' : 'https://youtu.be/CUO2BpYPXUs?si=FNkkZam9e8vioMYc', 
-                    'thumbnail' : 'https://img.youtube.com/vi/CUO2BpYPXUs/mqdefault.jpg',
-                },
-                '2026.06.19' : {
-                    'content' : '더미 일기4',
-                    'youtubeUrl' : 'https://youtu.be/z1ZIWJaKWGY?si=Iv4Q2G5UJFClkdD4', 
-                    'thumbnail' : 'https://img.youtube.com/vi/z1ZIWJaKWGY/mqdefault.jpg',
-                },
-                '2026.06.20' : {
-                    'content' : '와! 정말 엄청난일이 벌어졌습니다 \n제가이걸대체어떻게만든거죠 \nai가도와주긴했습니다그래도엄청나게장하다고생각합니다 \n \n^______^',
-                    'youtubeUrl' : 'https://youtu.be/EXtiYj1w7dI?si=U2h_shvXFRZdvUXT', 
-                    'thumbnail' : 'https://img.youtube.com/vi/EXtiYj1w7dI/mqdefault.jpg',
-                },
-                '2026.06.21' : {
-                    'content' : '더미 일기6',
-                    'youtubeUrl' : 'https://youtu.be/2lwu4ZB-d44?si=0LH_fPRtw52MEMhI', 
-                    'thumbnail' : 'https://img.youtube.com/vi/2lwu4ZB-d44/mqdefault.jpg',
-                },
-                '2026.06.25' : {
-                    'content' : '더미 일기7',
-                    'youtubeUrl' : 'https://youtu.be/ZoZQoYpZaso?si=PdmLzHh9IUWeJCej', 
-                    'thumbnail' : 'https://img.youtube.com/vi/ZoZQoYpZaso/mqdefault.jpg',
-                },
-                '2026.06.29' : {
-                    'content' : '더미 일기8',
-                    'youtubeUrl' : 'https://youtu.be/DYgE3SGPEqk?si=Ji9MVeZertqIRhGN', 
-                    'thumbnail' : 'https://img.youtube.com/vi/DYgE3SGPEqk/mqdefault.jpg',
-                },
-            }
+            
 
-            localStorage.setItem('linklog_diaries', JSON.stringify(dummy));
-            setDiaries(dummy);
+            localStorage.setItem('linklog_diaries', JSON.stringify(initialDiaries));
+            setDiaries(initialDiaries);
         }else{
             setDiaries(JSON.parse(data));
         }
