@@ -2,19 +2,15 @@
 export const getYoutubeThumbnail = (url) => {
   if (!url) return "";
 
-  // ID 추출
-  const regID =
-    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  // 주소창(watch?v=), 공유(youtu.be/), 쇼츠(shorts/) 등 주소에서 11자리 ID만 빼냄
+  const regID = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
   const match = url.match(regID);
 
-  if (match && match[2].length == 11) {
-    const videoID = match[2];
-
-    // ID 조합해서 중화질 썸네일 반환함
-    // maxresdefault <- 이건 고화질
-    // 고화질 안 쓴 이유 : 옛날 영상이면 없을수도 있기때문
-    return `https://img.youtube.com/vi/${videoID}/mqdefault.jpg`; // 06.24 세란 - 여기 부분 링크 형식으로 들어가니 썸네일 변환(jpg)로 안 나와서 수정했습니다.
+  // 매칭된 결과에서 11자리 ID 추출 성공 시 mqdefault 썸네일 주소 반환
+  if (match && match[1].length === 11) {
+    const videoID = match[1];
+    return `https://img.youtube.com/vi/${videoID}/mqdefault.jpg`;
   }
-  // 올바르지 않은 링크일 경우 빈값으로 반환
+  
   return "";
 };

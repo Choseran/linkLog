@@ -192,7 +192,10 @@ header .logo svg {
   .calendarBody
   .react-calendar
   .react-calendar__month-view__weekdays {
-  display: flex !important;
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background-color: #e0e0e0;
   text-align: center;
   text-decoration: none;
   font-weight: 600;
@@ -206,7 +209,6 @@ header .logo svg {
   .react-calendar
   .react-calendar__month-view__weekdays__weekday {
   padding: 5px 0;
-  border-right: 1px solid #e0e0e0;
   background: #fff;
 }
 #root
@@ -225,12 +227,6 @@ header .logo svg {
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-}
-#root
-  .indexContainer
-  .calendarBody
-  .react-calendar
-  .react-calendar__month-view__weekdays {
 }
 
 /* 월 전체 - 날짜 타일들이 모여 있는 grid 영역 */
@@ -444,7 +440,7 @@ header .logo svg {
   z-index: 60;
 
   width: 100%;
-  height: 630px;
+  min-height: 630px;
   background-color: #fff;
   border-radius: 30px 30px 0 0;
   border: 1px solid #ebebeb;
@@ -1117,7 +1113,6 @@ header .logo svg {
   #root .indexContainer {
     width: 765px;
     margin: 0 auto;
-    /* width: 60%; */
   }
   #root .mypageWrap .mypageModal {
     width: 60%;
@@ -1125,5 +1120,9 @@ header .logo svg {
   }
   .detailModalContainer .modalContainer {
     width: 765px;
+  }
+  #root .writeWrap{
+    width: 765px;
+    margin: 0 auto;
   }
 }
