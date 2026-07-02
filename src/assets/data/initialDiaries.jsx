@@ -35,6 +35,11 @@ export const initialDiaries = {
         'youtubeUrl' : 'https://www.youtube.com/watch?v=yxzMvI81fnw&pp=0gcJCUwLAYcqIYzv',
         'thumbnail' : 'https://img.youtube.com/vi/yxzMvI81fnw/mqdefault.jpg',
     },
+    '2026.05.16' : {
+        'content' : `오늘따라 CSS 레이아웃이 자꾸 깨져서 하루 종일 삽질만 했다.\n별것도 아닌 오타 하나 때문에 몇 시간을 날린 건지...\n그래도 해결하고 나니 속은 시원하다. 이 맛에 코딩하지.`,
+        'youtubeUrl' : 'https://youtu.be/q4qxpCGzxVU?si=Z10WbYOdar0-zJt6',
+        'thumbnail' : 'https://img.youtube.com/vi/Z10WbYOdar0/mqdefault.jpg',
+    },
     '2026.05.19' : {
         'content' : `오늘 저녁은 직접 파스타를 만들어 먹었다.\n생각보다 비주얼도 좋고 맛도 훌륭해서 대만족.\n종종 요리 좀 해 먹어야지.`,
         'youtubeUrl' : 'https://www.youtube.com/watch?v=VOmIplFAGeg&pp=ygUQ64m07KeE7IqkIOy_oO2CpA%3D%3D',
@@ -44,6 +49,16 @@ export const initialDiaries = {
         'content' : `날씨가 선선해서 퇴근하고 한 정거장 걸어왔다.\n바람도 기분 좋고, 길가에 장미 핀 것도 예쁘네.\n이런 소소한 일상이 참 소중하다.`,
         'youtubeUrl' : 'https://www.youtube.com/watch?v=_VUHM2PpMt8&pp=ygUK7JeR7IaMIHJ1bg%3D%3D',
         'thumbnail' : 'https://img.youtube.com/vi/_VUHM2PpMt8/mqdefault.jpg',
+    },
+    '2026.05.22' : {
+        'content' : `주말엔 역시 밀린 OTT와 유튜브 보면서 배달 음식 시켜 먹는 게 최고다.\n일주일 동안 쌓인 피로가 싹 가시는 기분.\n아무것도 안 하고 누워만 있어도 시간이 왜 이렇게 잘 가냐.`,
+        'youtubeUrl' : 'https://youtu.be/Cmn089l48tQ?si=rfFDKY8dAjki4ifh',
+        'thumbnail' : 'https://img.youtube.com/vi/Cmn089l48tQ/mqdefault.jpg',
+    },
+    '2026.05.23' : {
+        'content' : `노트북 들고 새로 오픈한 동네 카페에 가봤다.\n인테리어도 깔끔하고 통창으로 들어오는 햇살이 딱 내 취향이네.\n커피 한 잔 마시면서 작업하니까 집중도 더 잘 되는 느낌.`,
+        'youtubeUrl' : 'https://youtu.be/nQS3v12i8Gg?si=TYNPcoBYpZt-RACZ',
+        'thumbnail' : 'https://img.youtube.com/vi/nQS3v12i8Gg/mqdefault.jpg',
     },
     '2026.05.25' : {
         'content' : `주말에 너무 무리해서 놀았나 보다.\n하루 종일 피곤함이 가시질 않네.\n오늘은 일찍 불 끄고 푹 자야겠다.`,
