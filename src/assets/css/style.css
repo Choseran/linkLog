@@ -165,7 +165,7 @@ header .logo svg {
 
 /* ---------------- 메인 index ---------------- */
 #root .indexContainer {
-  /* padding: 0 20px; */
+  padding: 0 20px;
 }
 
 /* 월 / 월 이동 화살표 */
@@ -1125,4 +1125,7 @@ header .logo svg {
     width: 765px;
     margin: 0 auto;
   }
+  #root .indexContainer {
+  padding: 0;
+}
 }
